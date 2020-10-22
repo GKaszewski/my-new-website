@@ -1,13 +1,13 @@
 export interface Project {
 	name: string;
-	technology: string;
+	technology: string[];
 	shortDescription: string;
 	description: string;
 	category: string;
 	githubUrl: string;
 	downloadUrl: string;
 	visitUrl: string;
-	thumbnailUrl: string;
+	thumbnailUrls: string[];
 }
 
 export interface Post {
@@ -25,6 +25,10 @@ export interface Trivia {
 	name: string;
 	content: string;
 	slug: string;
+}
+
+export interface Skill {
+	name: string;
 }
 
 export interface StoreState {

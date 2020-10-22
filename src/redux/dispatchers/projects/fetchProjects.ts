@@ -11,7 +11,7 @@ const fetchProjects = () => {
 	return (dispatch) => {
 		dispatch(fetchProjectsPending());
 		axios
-			.get<Project[]>(`${BASE_URL}/projects/project-item/`)
+			.get<Project[]>(`${BASE_URL}/projects/`)
 			.then((res) => {
 				dispatch(fetchProjectsSuccess(res.data));
 				return res.data;
