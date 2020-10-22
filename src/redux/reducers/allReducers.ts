@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import { authReducer } from "./authReducer";
 import { postsReducer } from "./postReducer";
 import { projectsReducer } from "./projectReducer";
+import { skillReducer } from "./skillReducer";
 import { triviaReducer } from "./triviaReducer";
 
 export default combineReducers({
@@ -9,4 +10,5 @@ export default combineReducers({
 	postsReducer: postsReducer,
 	authReducer: authReducer,
 	triviasReducer: triviaReducer,
+	skillsReducer: skillReducer
 });
