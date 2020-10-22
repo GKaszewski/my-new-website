@@ -32,6 +32,8 @@ export const skillReducer = (state = initialState, action: SkillsActions): State
                 error: action.error,
                 pending: false
             }
+        default:
+            return state;
     }
 }
 
