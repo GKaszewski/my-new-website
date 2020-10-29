@@ -11,6 +11,7 @@ import fetchSkills from '../src/redux/dispatchers/skills/fetchSkills';
 import { Skill } from '../src/redux/types';
 import SkillComponent from '../src/components/skillcomponent';
 import { BaseLayout } from '../src/components/baselayout';
+import Spinner from '../src/components/spinner';
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
@@ -59,6 +60,9 @@ export default function Home() {
 								</Grid>
 							})}
 						</Grid>
+					</Grid>
+					<Grid item>
+						<Spinner open={pending} />
 					</Grid>
 					<Grid item style={{ textAlign: 'center' }} xs={12} sm={6}>
 						<Typography variant='h3'>Work experience</Typography>
