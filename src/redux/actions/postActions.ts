@@ -8,6 +8,9 @@ export const UPLOAD_POST_PENDING = "UPLOAD_POST_PENDING";
 export const UPLOAD_POST_SUCCESS = "UPLOAD_POST_SUCCESS";
 export const UPLOAD_POST_ERROR = "UPLOAD_POST_ERROR";
 
+export const SEARCH_POSTS_PENDING = 'SEARCH_POSTS_PENDING';
+export const SEARCH_POSTS_SUCCESS = 'SEARCH_POSTS_SUCCESS';
+export const SEARCH_POSTS_ERROR = 'SEARCH_POSTS_ERROR';
 interface FetchPostPendingAction {
 	type: typeof FETCH_POSTS_PENDING;
 }
@@ -36,13 +39,30 @@ interface UploadPostErrorAction {
 	error: any;
 }
 
+interface SearchPostsPendingAction {
+	type: typeof SEARCH_POSTS_PENDING,
+}
+
+interface SearchPostsSuccessAction {
+	type: typeof SEARCH_POSTS_SUCCESS,
+	payload: Post[],
+}
+
+interface SearchPostsErrorAction {
+	type: typeof SEARCH_POSTS_ERROR,
+	error: any;
+}
+
 export type PostActions =
 	| FetchPostPendingAction
 	| FetchPostSuccessAction
 	| FetchPostErrorAction
 	| UploadPostPendingAction
 	| UploadPostSuccessAction
-	| UploadPostErrorAction;
+	| UploadPostErrorAction
+	| SearchPostsPendingAction
+	| SearchPostsSuccessAction
+	| SearchPostsErrorAction;
 
 export const fetchPostsPending = (): PostActions => {
 	return {
@@ -83,3 +103,23 @@ export const uploadPostError = (error: any): PostActions => {
 		error: error,
 	};
 };
+
+export const searchPostsPending = (): PostActions => {
+	return {
+		type: SEARCH_POSTS_PENDING,
+	}
+}
+
+export const searchPostsSuccess = (posts: Post[]): PostActions => {
+	return {
+		type: SEARCH_POSTS_SUCCESS,
+		payload: posts
+	}
+}
+
+export const searchPostsError = (error: any): PostActions => {
+	return {
+		type: SEARCH_POSTS_ERROR,
+		error: error
+	}
+}
