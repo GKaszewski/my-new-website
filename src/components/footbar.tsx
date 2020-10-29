@@ -6,10 +6,8 @@ export default function Footbar() {
 		<Box
 			display="flex"
 			flexDirection="row"
-			justifyContent="center"
-			justifyItems="center"
-			alignItems="center"
-			alignContent="center"
+			flexGrow={1}
+			width={1} maxWidth="auto"
 		>
 			<AppBar position="sticky">
 				<Toolbar>
