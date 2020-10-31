@@ -60,8 +60,6 @@ export default function Home() {
 								</Grid>
 							})}
 						</Grid>
-					</Grid>
-					<Grid item>
 						<Spinner open={pending} />
 					</Grid>
 					<Grid item style={{ textAlign: 'center' }} xs={12} sm={6}>
