@@ -9,6 +9,7 @@ import { searchPosts } from '../src/redux/dispatchers/blog/searchPosts';
 import Spinner from '../src/components/spinner';
 import { Post } from '../src/redux/types';
 import PostLink from '../src/components/postLink';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
@@ -72,23 +73,21 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 }))
 
 export default function Blog() {
-    const dispatch = useDispatch();
-    const { pending, posts } = useSelector(state => state.postsReducer);
-    const [openDrawer, setDrawer] = useState(false);
-    const [query, setQuery] = useState('');
     const classes = useStyles();
+    const dispatch = useDispatch();
+    const { pending, posts, searchedPosts } = useSelector(state => state.postsReducer);
+    const [query, setQuery] = useState('');
+    const [searched, setSearched] = useState(false);
 
     useEffect(() => {
         dispatch(fetchPosts());
+        setSearched(false);
     }, [])
-
-    const handleDrawer = () => {
-        setDrawer(!openDrawer);
-    }
 
     const handleSearch = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         dispatch(searchPosts(query));
+        setSearched(true);
     }
 
     return <BaseLayout title="Gabriel Kaszewski - Blog">
@@ -97,7 +96,9 @@ export default function Blog() {
                 <Grid item>
                     <AppBar className={classes.blogBar} color="transparent" elevation={0} position="relative">
                         <Toolbar>
-
+                            {searched && <IconButton onClick={() => setSearched(false)}>
+                                <ArrowBackIcon />
+                            </IconButton>}
                             <div className={classes.search}>
                                 <div className={classes.searchIcon}>
                                     <SearchIcon />
@@ -117,7 +118,11 @@ export default function Blog() {
                 {posts.length > 0 ? null : <Grid item>
                     <Typography>Posts will show up here!</Typography>
                 </Grid>}
-                {posts.map((post: Post) => {
+                {searched ? searchedPosts.map((post: Post) => {
+                    return <Grid key={post.title} item>
+                        <PostLink data={post} />
+                    </Grid>
+                }) : posts.map((post: Post) => {
                     return <Grid key={post.title} item>
                         <PostLink data={post} />
                     </Grid>
