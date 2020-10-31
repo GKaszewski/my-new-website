@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import Head from "next/head";
 import ProjectPanel from "../src/components/projectPanel";
 import React, { useEffect } from "react";
 import fetchProjects from "../src/redux/dispatchers/projects/fetchProjects";

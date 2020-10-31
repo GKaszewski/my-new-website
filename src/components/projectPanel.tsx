@@ -13,7 +13,8 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import { Project } from "../redux/types";
-
+import Image from 'next/image';
+import ProjectImageCarousel from "./projectimagecarousel";
 interface Props {
 	project: Project;
 }
@@ -133,22 +134,14 @@ export default function ProjectPanel(props: Props) {
 							</Grid>
 						</Grid>
 					</Grid>
-					{/* {props.project.thumbnailUrls ? (
-						<Grid item xs>
-							<Container className={classes.imgContainer}>
-								<Paper elevation={3}>
-									<img src={props.project.thumbnailUrls[0]}></img>
-								</Paper>
-							</Container>
+					{props.project.thumbnailUrls && (
+						<Grid item xs={12} sm={6}>
+							<ProjectImageCarousel urls={props.project.thumbnailUrls} />
 						</Grid>
-					) : null} */}
-					<Grid item xs={12} sm={6}>
-						<Box className={classes.imgContainer}>
-							<Paper elevation={3}>
-								<img src="https://i.imgur.com/MNLefuT.jpg"></img>
-							</Paper>
-						</Box>
-					</Grid>
+					)}
+					{/* <Grid item xs={12} sm={6}>
+						<ProjectImageCarousel urls={["https://i.imgur.com/MNLefuT.jpg", "https://i.imgur.com/rSPt0qi.jpg"]} />
+					</Grid> */}
 				</Grid>
 			</Container>
 		</Grow>
