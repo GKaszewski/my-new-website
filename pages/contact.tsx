@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button, createStyles, Divider, Grid, Link, makeStyles, TextField, Theme, Typography } from '@material-ui/core';
+import { Button, createStyles, Divider, Grid, Link, makeStyles, Snackbar, TextField, Theme, Typography } from '@material-ui/core';
 import { BaseLayout } from '../src/components/baselayout';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import Head from 'next/head';
+import sendMail from '../src/utils/sendMail';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     formContainer: {
@@ -22,12 +23,17 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 export default function Contact() {
     const classes = useStyles();
 
-    const [data, setData] = useState(null);
+    const [email, setEmail] = useState('');
+    const [subject, setSubject] = useState('');
+    const [content, setContent] = useState('');
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
-        //submit
-        alert('success!');
+
+        await sendMail({ email, subject, content });
+        setEmail("");
+        setSubject("");
+        setContent("");
     }
 
     return <BaseLayout title="Gabriel Kaszewski - Contact">
@@ -52,13 +58,16 @@ export default function Contact() {
             <form className={classes.formContainer} onSubmit={handleSubmit}>
                 <Grid container direction="column" justify="center" spacing={1}>
                     <Grid item xs={12} md={12}>
-                        <TextField className={classes.formElement} required type="email" variant="outlined" color="secondary" id="email" label="Your email" />
+                        <TextField value={email} className={classes.formElement} onChange={(e) => setEmail(e.target.value)}
+                            required type="email" variant="outlined" color="secondary" id="email" label="Your email" />
                     </Grid>
                     <Grid item xs={12}>
-                        <TextField className={classes.formElement} required variant="outlined" color="secondary" id="topic" label="Topic" />
+                        <TextField value={subject} className={classes.formElement} onChange={(e) => setSubject(e.target.value)}
+                            required variant="outlined" color="secondary" id="subject" label="Subject" />
                     </Grid>
                     <Grid item xs={12}>
-                        <TextField className={classes.formElement} required variant="outlined" color="secondary" id="content" label="Content" multiline rows={12} />
+                        <TextField value={content} className={classes.formElement} onChange={(e) => setContent(e.target.value)}
+                            required variant="outlined" color="secondary" id="content" label="Content" multiline rows={12} />
                     </Grid>
                     <Grid item xs={12}>
                         <Button className={classes.sendButton} type="submit" color="secondary" variant="contained">Send <MailOutlineIcon /></Button>
