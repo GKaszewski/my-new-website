@@ -26,12 +26,12 @@ const renderers = {
 
 export default function PostComponent(props: Props) {
     const classes = useStyles();
-    return <Grid item container direction="column">
+    return <Grid item container direction="column" alignContent="center">
         <Grid item xs={12}>
             <Typography variant="h3">{props.data.title}</Typography>
             <Typography variant="h6">{new Date(props.data.created_on).toDateString()}</Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} md={6}>
             <ReactMarkdown className={classes.content} plugins={[gfm]} renderers={renderers}>
                 {props.data.content}
             </ReactMarkdown>
