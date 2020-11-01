@@ -52,13 +52,13 @@ export default function Contact() {
             <form className={classes.formContainer} onSubmit={handleSubmit}>
                 <Grid container direction="column" justify="center" spacing={1}>
                     <Grid item xs={12} md={12}>
-                        <TextField className={classes.formElement} variant="outlined" color="secondary" id="email" label="Your email" />
+                        <TextField className={classes.formElement} required type="email" variant="outlined" color="secondary" id="email" label="Your email" />
                     </Grid>
                     <Grid item xs={12}>
-                        <TextField className={classes.formElement} variant="outlined" color="secondary" id="topic" label="Topic" />
+                        <TextField className={classes.formElement} required variant="outlined" color="secondary" id="topic" label="Topic" />
                     </Grid>
                     <Grid item xs={12}>
-                        <TextField className={classes.formElement} variant="outlined" color="secondary" id="content" label="Content" multiline rows={12} />
+                        <TextField className={classes.formElement} required variant="outlined" color="secondary" id="content" label="Content" multiline rows={12} />
                     </Grid>
                     <Grid item xs={12}>
                         <Button className={classes.sendButton} type="submit" color="secondary" variant="contained">Send <MailOutlineIcon /></Button>
