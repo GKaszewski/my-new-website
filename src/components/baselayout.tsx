@@ -49,7 +49,7 @@ export const BaseLayout: FunctionComponent<Props> = ({ title, children }) => {
         <Grid item style={{ padding: 0 }}>
             <NavigationBar />
         </Grid>
-        <Grid style={{ height: '100%' }} container item justify="center" >
+        <Grid style={{ height: '100%' }} container item justify="center">
             {children}
         </Grid>
         <Grid item className={classes.filler}>

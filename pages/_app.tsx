@@ -7,6 +7,7 @@ import theme from "../src/utils/theme";
 import { Provider } from "react-redux";
 import Store from "../src/redux/store";
 import { createWrapper } from "next-redux-wrapper";
+import { DefaultSeo } from "next-seo";
 
 function MyApp(props) {
 	const { Component, pageProps } = props;
@@ -31,6 +32,17 @@ function MyApp(props) {
 			<Provider store={Store}>
 				<ThemeProvider theme={theme}>
 					<CssBaseline />
+					<DefaultSeo
+						title="Gabriel Kaszewski"
+						description="Gabriel's Kaszewski personal website."
+
+						openGraph={{
+							title: 'Gabriel Kaszewski',
+							locale: 'en_US',
+							site_name: 'Gabriel Kaszewski',
+							url: 'https://gkaszewski.github.io/'
+						}}
+					/>
 					<Component {...pageProps} />
 				</ThemeProvider>
 			</Provider>
