@@ -10,12 +10,16 @@ export interface Project {
 	thumbnailUrls: string[];
 }
 
+interface Author {
+	username: string;
+}
+
 export interface Post {
 	id: number;
 	status: number;
 	title: string;
 	slug: string;
-	author: string;
+	author: Author;
 	content: string;
 	created_on: Date;
 	category: string;
