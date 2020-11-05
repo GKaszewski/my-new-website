@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStyles, Link, makeStyles, Theme } from '@material-ui/core';
+import { Link } from '@material-ui/core';
 import { Post } from '../redux/types';
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function PostLink(props: Props) {
-    return <Link href={`/posts/${encodeURIComponent(props.data.slug)}`} color="textPrimary" variant="body2" underline="hover">
+    return <Link href={`/blog/${encodeURIComponent(props.data.slug)}`} color="textPrimary" variant="body2" underline="hover">
         {props.data.title}
     </Link>
 }
