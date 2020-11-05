@@ -3,3 +3,5 @@ const signOut = () => {
 		dispatch(signOut);
 	};
 };
+
+export default signOut;
