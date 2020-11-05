@@ -1,6 +1,4 @@
 import { Box, createStyles, makeStyles, Paper, Theme } from '@material-ui/core';
-import Head from 'next/head';
-import Image from 'next/image';
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
@@ -33,7 +31,7 @@ export default function ProjectImageCarousel(props: Props) {
         <Paper elevation={3}>
             <Carousel autoPlay={true} infiniteLoop showThumbs={false} showArrows={false} showStatus={false} swipeable>
                 {props.urls.map((url, i) => {
-                    return <Image key={`${url}-${i}`} src={url} unsized quality={100} loading="lazy" />
+                    return <img key={`${url}-${i}`} src={url} />
                 })}
             </Carousel>
         </Paper>
