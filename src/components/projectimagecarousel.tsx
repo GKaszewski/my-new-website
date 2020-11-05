@@ -1,6 +1,4 @@
 import { Box, createStyles, makeStyles, Paper, Theme } from '@material-ui/core';
-import Head from 'next/head';
-import Image from 'next/image';
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
