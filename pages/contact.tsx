@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, createStyles, Divider, Grid, Link, makeStyles, Snackbar, TextField, Theme, Typography } from '@material-ui/core';
+import { Button, createStyles, Grid, Link, makeStyles, TextField, Theme, Typography } from '@material-ui/core';
 import { BaseLayout } from '../src/components/baselayout';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import Head from 'next/head';

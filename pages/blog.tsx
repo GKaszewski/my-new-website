@@ -1,6 +1,5 @@
 import React, { useEffect, useState, FormEvent } from 'react';
-import { AppBar, Button, createStyles, Drawer, Grid, IconButton, InputBase, makeStyles, Theme, Toolbar, Typography, fade } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import { AppBar, createStyles, Grid, IconButton, InputBase, makeStyles, Theme, Toolbar, Typography, fade } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { BaseLayout } from '../src/components/baselayout';
 import { useDispatch, useSelector } from "react-redux";
