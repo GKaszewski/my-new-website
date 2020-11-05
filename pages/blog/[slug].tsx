@@ -15,7 +15,7 @@ interface Props {
 export default function PostPage(props: Props) {
     return <BaseLayout title={`Gabriel Kaszewski - ${props.data.title}`}>
         <BlogJsonLd
-            url={`https://gkaszewski.github.io/blog/${props.data.slug}`}
+            url={`https://gabrielkaszewski.netlify.app/blog/${props.data.slug}`}
             title={props.data.title}
             datePublished={new Date(props.data.created_on).toISOString()}
             dateModified={new Date(props.data.created_on).toISOString()}
