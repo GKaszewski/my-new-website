@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { GetServerSideProps, GetStaticPaths } from 'next';
+import React from 'react';
+import { GetServerSideProps } from 'next';
 import axios from 'axios';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { BaseLayout } from '../../src/components/baselayout';
 import { Post } from '../../src/redux/types';
 import { BASE_URL } from '../../src/utils/ApiData';
@@ -28,6 +28,7 @@ export default function PostPage(props: Props) {
         </Grid>
     </BaseLayout>
 }
+
 
 export const getServerSideProps: GetServerSideProps<Props> = async (context) => {
     const slug = context.params.slug;
