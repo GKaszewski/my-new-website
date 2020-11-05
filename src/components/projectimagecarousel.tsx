@@ -33,7 +33,7 @@ export default function ProjectImageCarousel(props: Props) {
         <Paper elevation={3}>
             <Carousel autoPlay={true} infiniteLoop showThumbs={false} showArrows={false} showStatus={false} swipeable>
                 {props.urls.map((url, i) => {
-                    return <Image key={`${url}-${i}`} src={url} unsized quality={100} loading="lazy" />
+                    return <img key={`${url}-${i}`} src={url} />
                 })}
             </Carousel>
         </Paper>
