@@ -27,12 +27,15 @@ export const projectsReducer = (
 			return {
 				...state,
 				pending: true,
+				error: null,
+				projects: [],
 			};
 		case FETCH_PROJECTS_SUCCESS:
 			return {
 				...state,
 				pending: false,
 				projects: action.payload,
+				error: null,
 			};
 		case FETCH_PROJECTS_ERROR:
 			return {

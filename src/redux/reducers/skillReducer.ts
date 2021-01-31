@@ -18,13 +18,16 @@ export const skillReducer = (state = initialState, action: SkillsActions): State
         case FETCH_SKILLS_PENDING:
             return {
                 ...state,
-                pending: true
+                pending: true,
+                error: null,
+                skills: [],
             }
         case FETCH_SKILLS_SUCCESS:
             return {
                 ...state,
                 skills: action.payload,
-                pending: false
+                pending: false,
+                error: null,
             }
         case FETCH_SKILLS_ERROR:
             return {

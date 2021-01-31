@@ -4,6 +4,7 @@ import {
 	SIGN_IN_PENDING,
 	SIGN_IN_SUCCESS,
 	SIGN_IN_ERROR,
+	SIGNED_IN_ALREADY,
 } from "../actions/authActions";
 
 interface State {
@@ -29,6 +30,7 @@ export const authReducer = (
 			return {
 				...state,
 				pending: true,
+				error: null,
 			};
 		case SIGN_IN_SUCCESS:
 			return {
@@ -36,6 +38,7 @@ export const authReducer = (
 				pending: false,
 				token: action.payload,
 				loggedIn: true,
+				error: null,
 			};
 		case SIGN_IN_ERROR:
 			return {
@@ -49,7 +52,15 @@ export const authReducer = (
 				...state,
 				token: null,
 				loggedIn: false,
+				error: null,
 			};
+		case SIGNED_IN_ALREADY:
+			return {
+				...state,
+				loggedIn: true,
+				token: action.payload,
+				error: null,
+			}
 		default:
 			return state;
 	}

@@ -1,149 +1,71 @@
-import {
-	Box,
-	Button,
-	Chip,
-	Container,
-	createStyles,
-	Grid,
-	Grow,
-	makeStyles,
-	Paper,
-	Theme,
-	Typography,
-} from "@material-ui/core";
 import React from "react";
 import { Project } from "../redux/types";
-import Image from 'next/image';
 import ProjectImageCarousel from "./projectimagecarousel";
+import ChipComponent from "./chip";
+import { Button } from "./button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 interface Props {
-	project: Project;
+  project: Project;
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-	createStyles({
-		root: {
-			height: "100%",
-		},
-		imgContainer: {
-			width: "100%",
-			height: "100%",
-			"& img": {
-				display: "block",
-				objectFit: "cover",
-				height: "auto",
-				width: "100%",
-				marginTop: "1rem",
-				marginBottom: "1rem",
-			},
-		},
-		description: {
-			hyphens: "auto",
-			wordWrap: "normal",
-			whiteSpace: "pre-line",
-		},
-		chip: {
-			color: theme.palette.text.primary,
-		},
-	})
-);
-
 export default function ProjectPanel(props: Props) {
-	const classes = useStyles();
-	return (
-		<Grow in={true} timeout={1000}>
-			<Container className={classes.root}>
-				<Grid
-					container
-					direction="row"
-					alignItems="center"
-					justify="space-evenly"
-					spacing={2}
-				>
-					<Grid item xs={12} sm={6}>
-						<Grid
-							container
-							direction="column"
-							alignItems="flex-start"
-							justify="space-evenly"
-							spacing={2}
-						>
-							<Grid item>
-								<Typography variant="h3">{props.project.name}</Typography>
-							</Grid>
-							<Grid item>
-								<Typography variant="body1" className={classes.description}>
-									{props.project.description}
-								</Typography>
-							</Grid>
-							{props.project.technology ? (
-								<Grid item>
-									<Grid container direction="row" spacing={1}>
-										{props.project.technology.map((tech) => {
-											return (
-												<Grid key={tech} item>
-													<Chip
-														//className={classes.chip}
-														color="secondary"
-														label={tech}
-													/>{" "}
-												</Grid>
-											);
-										})}
-									</Grid>
-								</Grid>
-							) : null}
-
-							<Grid item>
-								<Grid container direction="row" spacing={1}>
-									{props.project.githubUrl ? (
-										<Grid item>
-											<Button
-												color="secondary"
-												variant="outlined"
-												href={props.project.githubUrl}
-											>
-												Code
-											</Button>
-										</Grid>
-									) : null}
-
-									{props.project.visitUrl ? (
-										<Grid item>
-											<Button
-												color="secondary"
-												variant="outlined"
-												href={props.project.visitUrl}
-											>
-												Live
-											</Button>
-										</Grid>
-									) : null}
-
-									{props.project.downloadUrl ? (
-										<Grid item>
-											<Button
-												color="secondary"
-												variant="outlined"
-												href={props.project.downloadUrl}
-											>
-												Download
-											</Button>
-										</Grid>
-									) : null}
-								</Grid>
-							</Grid>
-						</Grid>
-					</Grid>
-					{props.project.thumbnailUrls && (
-						<Grid item xs={12} sm={6}>
-							<ProjectImageCarousel urls={props.project.thumbnailUrls} />
-						</Grid>
-					)}
-					{/* <Grid item xs={12} sm={6}>
-						<ProjectImageCarousel urls={["https://i.imgur.com/MNLefuT.jpg", "https://i.imgur.com/rSPt0qi.jpg"]} />
-					</Grid> */}
-				</Grid>
-			</Container>
-		</Grow>
-	);
+  return (
+    <div className="flex w-full h-full items-center justify-evenly gap-4">
+      <div className="flex flex-col-reverse md:flex-col md:w-1/2 justify-evenly gap-4">
+        <h3 className="text-3xl">{props.project.name}</h3>
+        <h3 className="text-lg whitespace-pre-wrap">
+          {props.project.description}
+        </h3>
+        {props.project.technology && (
+          <div className="flex flex-wrap gap-2 sm:justify-center md:justify-start">
+            {props.project.technology.map((tech) => {
+              return <ChipComponent key={tech} label={tech} />;
+            })}
+          </div>
+        )}
+        <div className="flex flex-wrap gap-2 sm:justify-center md:justify-start">
+          {props.project.githubUrl && (
+            <Button>
+              <a href={props.project.githubUrl}>
+                <span>
+                  <FontAwesomeIcon icon={["fab", "github"]} />
+                </span>{" "}
+                CODE
+              </a>
+            </Button>
+          )}
+          {props.project.visitUrl && (
+            <Button>
+              <a href={props.project.visitUrl}>
+                <span>
+                  <FontAwesomeIcon icon={["fas", "eye"]} />
+                </span>{" "}
+                LIVE
+              </a>
+            </Button>
+          )}
+          {props.project.downloadUrl && (
+            <Button>
+              <a href={props.project.downloadUrl}>
+                <span>
+                  <FontAwesomeIcon icon={["fas", "cloud-download-alt"]} />
+                </span>{" "}
+                DOWNLOAD
+              </a>
+            </Button>
+          )}
+        </div>
+        <div className="md:hidden">
+          {props.project.thumbnailUrls && (
+            <ProjectImageCarousel urls={props.project.thumbnailUrls} />
+          )}
+        </div>
+      </div>
+      <div className="hidden md:flex md:w-1/2">
+        {props.project.thumbnailUrls && (
+          <ProjectImageCarousel urls={props.project.thumbnailUrls} />
+        )}
+      </div>
+    </div>
+  );
 }

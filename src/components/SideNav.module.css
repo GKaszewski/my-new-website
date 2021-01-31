@@ -1,0 +1,15 @@
+.sidenav {
+  transition: 0.5s;
+  max-width: 100%;
+  min-width: 0%;
+  overflow-x: hidden;
+}
+
+.nav-cover {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+}

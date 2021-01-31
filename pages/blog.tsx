@@ -1,135 +1,129 @@
-import React, { useEffect, useState, FormEvent } from 'react';
-import { AppBar, createStyles, Grid, IconButton, InputBase, makeStyles, Theme, Toolbar, Typography, fade } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
-import { BaseLayout } from '../src/components/baselayout';
+import React, { useEffect, useState, FormEvent } from "react";
+import { BaseLayout } from "../src/components/baselayout";
 import { useDispatch, useSelector } from "react-redux";
-import fetchPosts from '../src/redux/dispatchers/blog/fetchPosts';
-import { searchPosts } from '../src/redux/dispatchers/blog/searchPosts';
-import Spinner from '../src/components/spinner';
-import { Post } from '../src/redux/types';
-import PostLink from '../src/components/postLink';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-
-const useStyles = makeStyles((theme: Theme) => createStyles({
-    root: {
-        width: '100%',
-    },
-    blogBar: {
-        flexGrow: 1,
-    },
-    drawer: {
-        width: '100%',
-        backgroundColor: theme.palette.background.default,
-        flex: 1,
-    },
-    categories: {
-        marginTop: theme.spacing(1),
-    },
-    categoryButton: {
-        color: theme.palette.text.primary,
-        width: '100%',
-    },
-    search: {
-        position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: fade(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
-        },
-        marginRight: theme.spacing(2),
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(3),
-            width: 'auto',
-        },
-    },
-    searchIcon: {
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    inputRoot: {
-        color: 'inherit',
-    },
-    inputInput: {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('md')]: {
-            width: '20ch',
-        },
-    },
-    menu: {
-        color: 'white',
-    }
-}))
+import fetchPosts from "../src/redux/dispatchers/blog/fetchPosts";
+import { searchPosts } from "../src/redux/dispatchers/blog/searchPosts";
+import Spinner from "../src/components/spinner";
+import { Post } from "../src/redux/types";
+import PostLink from "../src/components/postLink";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SideNavComponent from "../src/components/sidenav";
+import { Button } from "../src/components/button";
 
 export default function Blog() {
-    const classes = useStyles();
-    const dispatch = useDispatch();
-    const { pending, posts, searchedPosts } = useSelector(state => state.postsReducer);
-    const [query, setQuery] = useState('');
-    const [searched, setSearched] = useState(false);
+  const dispatch = useDispatch();
+  const { pending, posts, searchedPosts, error } = useSelector(
+    (state) => state.postsReducer
+  );
+  const [query, setQuery] = useState("");
+  const [searched, setSearched] = useState(false);
 
-    useEffect(() => {
-        dispatch(fetchPosts());
-        setSearched(false);
-    }, [])
+  useEffect(() => {
+    dispatch(fetchPosts());
+    setSearched(false);
+  }, []);
 
-    const handleSearch = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        dispatch(searchPosts(query));
+  const handleSearch = (e: any) => {
+    if (query.length <= 0) return;
+
+    e.preventDefault();
+    dispatch(searchPosts(query));
+    setSearched(true);
+  };
+
+  enum Categories {
+    LIFE = 0,
+    TECHNOLOGY = 1,
+    TUTORIAL = 2,
+    ALL = 3,
+  }
+
+  const handleCategories = (category: number) => {
+    switch (category) {
+      case Categories.LIFE:
+        dispatch(searchPosts("LIFE"));
         setSearched(true);
+        break;
+      case Categories.TECHNOLOGY:
+        dispatch(searchPosts("TECHNOLOGY"));
+        setSearched(true);
+        break;
+      case Categories.TUTORIAL:
+        dispatch(searchPosts("TUTORIAL"));
+        setSearched(true);
+        break;
+      default:
+        break;
     }
+  };
 
-    return <BaseLayout title="Gabriel Kaszewski - Blog">
-        <Grid item className={classes.root}>
-            <Grid container direction="column" justify="center" alignContent="center" alignItems="center" spacing={2}>
-                <Grid item>
-                    <AppBar className={classes.blogBar} color="transparent" elevation={0} position="relative">
-                        <Toolbar>
-                            {searched && <IconButton onClick={() => setSearched(false)}>
-                                <ArrowBackIcon />
-                            </IconButton>}
-                            <div className={classes.search}>
-                                <div className={classes.searchIcon}>
-                                    <SearchIcon />
-                                </div>
-                                <form onSubmit={(e) => handleSearch(e)} >
-                                    <InputBase onChange={(e) => setQuery(e.target.value)} value={query} classes={{ root: classes.inputRoot, input: classes.inputInput }} placeholder="Search..." />
-                                </form>
-                            </div>
-                        </Toolbar>
-                    </AppBar>
-                </Grid>
-                <Grid item>
-                    <Typography variant="h3">
-                        Posts
-                    </Typography>
-                </Grid>
-                {posts.length > 0 ? null : <Grid item>
-                    <Typography>Posts will show up here!</Typography>
-                </Grid>}
-                {searched ? searchedPosts.map((post: Post) => {
-                    return <Grid key={post.title} item>
-                        <PostLink data={post} />
-                    </Grid>
-                }) : posts.map((post: Post) => {
-                    return <Grid key={post.title} item>
-                        <PostLink data={post} />
-                    </Grid>
-                })}
-                <Grid item>
-                    <Spinner open={pending} />
-                </Grid>
-            </Grid>
-        </Grid>
+  return (
+    <BaseLayout title="Gabriel Kaszewski - Blog">
+      <span className="m-12 md:m-8" />
+      <div className="flex gap-2 items-center">
+        <SideNavComponent>
+          <h3>Categories</h3>
+          <div className="flex flex-col m-4 gap-4">
+            <Button
+              callback={() => {
+                handleCategories(Categories.LIFE);
+              }}
+            >
+              Life
+            </Button>
+            <Button
+              callback={() => {
+                handleCategories(Categories.TECHNOLOGY);
+              }}
+            >
+              Technology
+            </Button>
+            <Button
+              callback={() => {
+                handleCategories(Categories.TUTORIAL);
+              }}
+            >
+              Tutorials
+            </Button>
+          </div>
+        </SideNavComponent>
+        {searched && (
+          <button
+            onClick={() => {
+              setSearched(false);
+              setQuery("");
+            }}
+          >
+            <FontAwesomeIcon icon={["fas", "arrow-left"]} />
+          </button>
+        )}
+        <form onSubmit={(e) => handleSearch(e)}>
+          <input
+            className="shadow-xl bg-gray-700 p-1 border border-gray-800 rounded"
+            onChange={(e) => setQuery(e.target.value)}
+            value={query}
+            placeholder="Search..."
+          />
+        </form>
+        <button onClick={handleSearch}>
+          <FontAwesomeIcon className="" icon={["fas", "search"]} />
+        </button>
+      </div>
+      <h1 className="fontb-bold text-5xl">Posts</h1>
+      <Spinner open={pending} />
+      {posts.length > 0 ? null : <p>No posts here yet 🤪</p>}
+      {searched
+        ? searchedPosts.map((post: Post) => {
+            return <PostLink key={post.title} data={post} />;
+          })
+        : posts.map((post: Post) => {
+            return <PostLink key={post.title} data={post} />;
+          })}
+      {error && (
+        <p className="text-red-600 text-xl font-bold">
+          Failed fetching posts 😔
+        </p>
+      )}
     </BaseLayout>
+  );
 }

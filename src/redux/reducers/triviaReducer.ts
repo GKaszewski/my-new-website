@@ -32,12 +32,15 @@ export const triviaReducer = (
 			return {
 				...state,
 				pending: true,
+				trivias: [],
+				error: null,
 			};
 		case FETCH_TRIVIAS_SUCCESS:
 			return {
 				...state,
 				pending: false,
 				trivias: action.payload,
+				error: null,
 			};
 		case FETCH_TRIVIAS_ERROR:
 			return {
@@ -49,12 +52,14 @@ export const triviaReducer = (
 			return {
 				...state,
 				pending: true,
+				error: null,
 			};
 		case UPLOAD_TRIVIAS_SUCCESS:
 			return {
 				...state,
 				pending: false,
 				newTrivias: action.payload,
+				error: null,
 			};
 		case UPLOAD_TRIVIAS_ERROR:
 			return {
