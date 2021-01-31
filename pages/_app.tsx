@@ -10,15 +10,15 @@ import "../styles/globals.css";
 import "../src/utils/font-awesome";
 
 function MyApp(props) {
-  const { Component, pageProps } = props;
+	const { Component, pageProps } = props;
 
-  React.useEffect(() => {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector("#jss-server-side");
-    if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles);
-    }
-  }, []);
+	React.useEffect(() => {
+		// Remove the server-side injected CSS.
+		const jssStyles = document.querySelector("#jss-server-side");
+		if (jssStyles) {
+			jssStyles.parentElement.removeChild(jssStyles);
+		}
+	}, []);
 
   return (
     <React.Fragment>
@@ -50,8 +50,8 @@ const makeStore = () => Store;
 const wrapper = createWrapper(makeStore);
 
 MyApp.propTypes = {
-  Component: PropTypes.elementType.isRequired,
-  pageProps: PropTypes.object.isRequired,
+	Component: PropTypes.elementType.isRequired,
+	pageProps: PropTypes.object.isRequired,
 };
 
 export default wrapper.withRedux(MyApp);
