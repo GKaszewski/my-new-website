@@ -1,6 +1,7 @@
 import styles from "./SideNav.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { toggle } from "../redux/dispatchers/sidebar/toggle";
+import React, { CSSProperties } from "react";
 
 export default function SideNavComponent({ children }) {
   const dispatch = useDispatch();
@@ -19,9 +20,9 @@ export default function SideNavComponent({ children }) {
     if (e.key === "Escape") closeNav();
   };
 
-  const navCoverStyle = { width: isToggled ? "100%" : "0" };
-  const sideNavStyle = { width: isToggled ? "250px" : "0" };
-  const openButtonStyle = { visibility: isToggled ? "hidden" : "visible" };
+  const navCoverStyle : CSSProperties = { width: isToggled ? "100%" : "0" };
+  const sideNavStyle: CSSProperties = { width: isToggled ? "250px" : "0" };
+  const openButtonStyle: CSSProperties = { visibility: isToggled ? "hidden" : "visible" };
 
   return (
     <div>
