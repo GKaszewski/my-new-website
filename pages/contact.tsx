@@ -1,79 +1,91 @@
-import React, { useState } from 'react';
-import { Button, createStyles, Grid, Link, makeStyles, TextField, Theme, Typography } from '@material-ui/core';
-import { BaseLayout } from '../src/components/baselayout';
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
-import Head from 'next/head';
-import sendMail from '../src/utils/sendMail';
-
-const useStyles = makeStyles((theme: Theme) => createStyles({
-    formContainer: {
-        width: '50%',
-        [theme.breakpoints.down('xs')]: {
-            width: '100%'
-        }
-    },
-    formElement: {
-        width: '100%',
-    },
-    sendButton: {
-        float: 'right'
-    }
-}));
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
+import { BaseLayout } from "../src/components/baselayout";
+import { Button } from "../src/components/button";
+import TextField from "../src/components/textfield";
+import sendMail from "../src/utils/sendMail";
 
 export default function Contact() {
-    const classes = useStyles();
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [content, setContent] = useState("");
+  const [error, setError] = useState(false);
 
-    const [email, setEmail] = useState('');
-    const [subject, setSubject] = useState('');
-    const [content, setContent] = useState('');
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const handleSubmit = async e => {
-        e.preventDefault();
+    let res = await sendMail({ email, subject, content });
+    if (!res) setError(true);
+    else setError(false);
 
-        await sendMail({ email, subject, content });
-        setEmail("");
-        setSubject("");
-        setContent("");
-    }
+    setEmail("");
+    setSubject("");
+    setContent("");
+  };
 
-    return <BaseLayout title="Gabriel Kaszewski - Contact">
-        <Head>
-            <script src="https://kit.fontawesome.com/6f974350df.js"></script>
-        </Head>
-        <Grid item>
-            <Typography variant="h2">Contact</Typography>
-        </Grid>
-        <Grid item container direction="column" alignContent="center" spacing={1}>
-            <Grid item>
-                <Link color="textPrimary" variant="h5" href="http://github.com/GKaszewski"><i className="fab fa-github"></i> Github</Link>
-            </Grid>
-            <Grid item>
-                <Link color="textPrimary" variant="h5" href="https://www.linkedin.com/in/gabriel-kaszewski-5344b3183/"><i className="fab fa-linkedin-in"></i> Linkedin</Link>
-            </Grid>
-        </Grid>
-        <Grid item>
-            <Typography variant="h2">Send me an email!</Typography>
-        </Grid>
-        <Grid item container justify="center">
-            <form className={classes.formContainer} onSubmit={handleSubmit}>
-                <Grid container direction="column" justify="center" spacing={1}>
-                    <Grid item xs={12} md={12}>
-                        <TextField value={email} className={classes.formElement} onChange={(e) => setEmail(e.target.value)}
-                            required type="email" variant="outlined" color="secondary" id="email" label="Your email" />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField value={subject} className={classes.formElement} onChange={(e) => setSubject(e.target.value)}
-                            required variant="outlined" color="secondary" id="subject" label="Subject" />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField value={content} className={classes.formElement} onChange={(e) => setContent(e.target.value)}
-                            required variant="outlined" color="secondary" id="content" label="Content" multiline rows={12} />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Button className={classes.sendButton} type="submit" color="secondary" variant="contained">Send <MailOutlineIcon /></Button>
-                    </Grid>
-                </Grid>
-            </form>
-        </Grid>
+  return (
+    <BaseLayout title="Gabriel Kaszewski - Contact">
+      <span className="m-8" />
+      <h1 className="text-5xl text-center font-bold">Contact</h1>
+      <a className="hover:underline" href="https://github.com/GKaszewski">
+        Github <FontAwesomeIcon icon={["fab", "github"]} />
+      </a>
+      <a
+        className="hover:underline"
+        href="https://www.linkedin.com/in/gabriel-kaszewski-5344b3183"
+      >
+        LinkedIn <FontAwesomeIcon icon={["fab", "linkedin-in"]} />
+      </a>
+      <a className="hover:underline" href="https://twitter.com/GKaszewski">
+        Twitter <FontAwesomeIcon icon={["fab", "twitter"]} />
+      </a>
+      <p>
+        <FontAwesomeIcon icon={["fas", "at"]} /> gabrielkaszewski@gmail.com
+      </p>
+      {/* <h2 className="text-4xl text-center font-bold">Send me an email!</h2>
+      <form className="w-full md:w-1/2" onSubmit={handleSubmit}>
+        <div className="flex flex-col justify-center items-center gap-4 m-4">
+          <div className="flex flex-col gap-2 justify-center items-center w-full">
+            <label htmlFor="email">Your email</label>
+            <TextField
+              value={email}
+              onChange={(value) => setEmail(value)}
+              type="email"
+              required
+            />
+          </div>
+          <div className="flex flex-col gap-2 justify-center items-center w-full">
+            <label htmlFor="subject">Subject</label>
+            <TextField
+              value={subject}
+              onChange={(value) => setSubject(value)}
+              required
+            />
+          </div>
+          <div className="flex flex-col gap-2 justify-center items-center w-full overflow-y-auto">
+            <label htmlFor="email">Content</label>
+            <textarea
+              rows={12}
+              style={{ resize: "none" }}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              required
+              className="rounded-xl w-full border-4 text-black py-1 px-2 outline-none appearance-none focus:border-yellow-400 h-full"
+            />
+          </div>
+          <div className="flex w-1/3 items-end">
+            <Button callback={handleSubmit}>
+              <p>
+                Send{" "}
+                <span>
+                  <FontAwesomeIcon icon={["fas", "envelope-open-text"]} />
+                </span>
+              </p>
+            </Button>
+          </div>
+        </div>
+      </form>
+      {error && <p>Failed sending email.</p>} */}
     </BaseLayout>
+  );
 }

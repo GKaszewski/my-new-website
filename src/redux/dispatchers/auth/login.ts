@@ -7,6 +7,8 @@ import {
 	signInSuccess,
 } from "../../actions/authActions";
 
+import Cookies from 'universal-cookie';
+
 const login = (user: UserData) => {
 	return (dispatch) => {
 		dispatch(signInPending());
@@ -15,6 +17,8 @@ const login = (user: UserData) => {
 			.then((res) => {
 				console.log(res.data.token);
 				dispatch(signInSuccess(res.data.token));
+				const cookies = new Cookies();
+				cookies.set('token', res.data.token);
 				return res.data;
 			})
 			.catch((error) => dispatch(signInError(error)));

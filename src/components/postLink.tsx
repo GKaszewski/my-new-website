@@ -1,13 +1,15 @@
-import React from 'react';
-import { Link } from '@material-ui/core';
-import { Post } from '../redux/types';
+import Link from "next/link";
+import React from "react";
+import { Post } from "../redux/types";
 
 interface Props {
-    data: Post
+  data: Post;
 }
 
 export default function PostLink(props: Props) {
-    return <Link href={`/blog/${encodeURIComponent(props.data.slug)}`} color="textPrimary" variant="body2" underline="hover">
-        {props.data.title}
+  return (
+    <Link href={`/blog/${encodeURIComponent(props.data.slug)}`}>
+      <a className="hover:underline">{props.data.title}</a>
     </Link>
+  );
 }

@@ -4,6 +4,8 @@ export const SIGN_IN_ERROR = "SIGN_IN_ERROR";
 
 export const SIGN_OUT = "SIGN_OUT";
 
+export const SIGNED_IN_ALREADY = "SIGNED_IN_ALREADY";
+
 interface SignInPendingAction {
 	type: typeof SIGN_IN_PENDING;
 }
@@ -22,11 +24,17 @@ interface SignOutAction {
 	type: typeof SIGN_OUT;
 }
 
+interface SignedInAlreadyAction {
+	type: typeof SIGNED_IN_ALREADY,
+	payload: string, 
+}
+
 export type AuthActions =
 	| SignInPendingAction
 	| SignInSuccessAction
 	| SignInErrorAction
-	| SignOutAction;
+	| SignOutAction
+	| SignedInAlreadyAction;
 
 export const signInPending = (): AuthActions => {
 	return {
@@ -53,3 +61,11 @@ export const signOut = (): AuthActions => {
 		type: SIGN_OUT,
 	};
 };
+
+export const signedInAlready = (token : string): AuthActions => {
+	return {
+		type: SIGNED_IN_ALREADY,
+		payload: token,
+	};
+};
+

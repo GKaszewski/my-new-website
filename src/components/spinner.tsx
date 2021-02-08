@@ -1,14 +1,16 @@
-import { Backdrop, CircularProgress } from "@material-ui/core";
 import React from "react";
+import styles from "./Spinner.module.css";
 
 interface Props {
-	open: boolean;
+  open: boolean;
 }
 
 export default function Spinner(props: Props) {
-	return (
-		<Backdrop open={props.open}>
-			<CircularProgress color="secondary" />
-		</Backdrop>
-	);
+  return (
+    <div
+      className={`${styles.loader} ${props.open ? styles.loader : "hidden"}`}
+    >
+      Loading...
+    </div>
+  );
 }

@@ -1,11 +1,11 @@
-import React from 'react';
-import { Chip } from '@material-ui/core';
-import { Skill } from '../redux/types';
+import React from "react";
+import { Skill } from "../redux/types";
+import ChipComponent from "./chip";
 
 interface Props {
-    skill: Skill;
+  skill: Skill;
 }
 
 export default function SkillComponent(props: Props) {
-    return <Chip color="secondary" label={props.skill.name} />
+  return <ChipComponent label={props.skill.name} />;
 }

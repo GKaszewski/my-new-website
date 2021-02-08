@@ -1,7 +1,13 @@
-const signOut = () => {
+import Cookies from 'universal-cookie';
+
+import {signOut} from '../../actions/authActions';
+
+const signOutAction = () => {
 	return (dispatch) => {
-		dispatch(signOut);
+		const cookies = new Cookies();
+		cookies.remove('token');
+		dispatch(signOut());
 	};
 };
 
-export default signOut;
+export default signOutAction;
