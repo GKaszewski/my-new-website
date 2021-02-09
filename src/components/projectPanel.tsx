@@ -11,7 +11,7 @@ interface Props {
 export default function ProjectPanel(props: Props) {
   return (
     <div className="flex w-full h-full items-center justify-evenly gap-4">
-      <div className="flex flex-col-reverse md:flex-col md:w-1/2 justify-evenly gap-4">
+      <div className="flex flex-col md:w-1/2 justify-evenly gap-4">
         <h3 className="text-3xl">{props.project.name}</h3>
         <h3 className="text-lg whitespace-pre-wrap">
           {props.project.description}
