@@ -37,7 +37,7 @@ export default function AboutPage() {
         <ChipComponent label="Australia" />
       </div>
       <h1 className="text-3xl font-bold">FAQ</h1>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 m-4">
         <FaqElement
           question="How old were you when you started programming?"
           answer="I was 11 years old."
