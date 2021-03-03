@@ -25,6 +25,7 @@ export default function AboutPage() {
         <ChipComponent label="Programming" />
         <ChipComponent label="Filmmaking" />
         <ChipComponent label="Working out" />
+        <ChipComponent label="Playing ukulele" />
       </div>
       <h1 className="text-3xl font-bold">Interests</h1>
       <div className="flex flex-wrap gap-4 m-4 md:m-0 md:w-1/2 justify-center items-center">
