@@ -1,3 +1,3 @@
-const BASE_URL = "https://gabrielkaszewski-api.herokuapp.com";
+const BASE_URL = "https://gabrielkaszewski.pl/api";
 
 export { BASE_URL };

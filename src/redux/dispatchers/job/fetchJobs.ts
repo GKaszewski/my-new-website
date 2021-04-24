@@ -7,7 +7,7 @@ const fetchJobs = () => {
 	return (dispatch) => {
 		dispatch(fetchJobsPending());
 		axios
-			.get<Job[]>(`${BASE_URL}/job/`)
+			.get<Job[]>(`${BASE_URL}/jobs/`)
 			.then((res) => {
 				dispatch(fetchJobsSuccess(res.data));
 				return res.data;
