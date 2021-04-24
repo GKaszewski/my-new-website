@@ -25,34 +25,28 @@ export default function ProjectPanel(props: Props) {
         )}
         <div className="flex flex-wrap gap-2 sm:justify-center md:justify-start">
           {props.project.githubUrl && (
-            <Button>
-              <a href={props.project.githubUrl}>
+              <a className="p-2 w-full text-center rounded-xl border border-yellow-400 hover:bg-yellow-400" href={props.project.githubUrl}>
                 <span>
                   <FontAwesomeIcon icon={["fab", "github"]} />
                 </span>{" "}
                 CODE
               </a>
-            </Button>
           )}
           {props.project.visitUrl && (
-            <Button>
-              <a href={props.project.visitUrl}>
+              <a className="p-2 w-full text-center rounded-xl border border-yellow-400 hover:bg-yellow-400" href={props.project.visitUrl}>
                 <span>
                   <FontAwesomeIcon icon={["fas", "eye"]} />
                 </span>{" "}
                 LIVE
               </a>
-            </Button>
           )}
           {props.project.downloadUrl && (
-            <Button>
-              <a href={props.project.downloadUrl}>
+              <a className="p-2 w-full text-center rounded-xl border border-yellow-400 hover:bg-yellow-400" href={props.project.downloadUrl}>
                 <span>
                   <FontAwesomeIcon icon={["fas", "cloud-download-alt"]} />
                 </span>{" "}
                 DOWNLOAD
               </a>
-            </Button>
           )}
         </div>
         <div className="md:hidden">
