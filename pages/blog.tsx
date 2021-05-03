@@ -65,7 +65,7 @@ export default function Blog() {
         description="Gabriel Kaszewski's blog"
         openGraph={{
           title: "Gabriel Kaszewski - Blog",
-          url: `https://gabrielkaszewski.netlify.app/blog/`,
+          url: `https://gabrielkaszewski.pl/blog/`,
           description: "Gabriel Kaszewski's blog",
           site_name: "Gabriel Kaszewski - Blog",
         }}
