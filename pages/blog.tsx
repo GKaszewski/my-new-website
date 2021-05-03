@@ -9,6 +9,7 @@ import PostLink from "../src/components/postLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideNavComponent from "../src/components/sidenav";
 import { Button } from "../src/components/button";
+import { NextSeo } from "next-seo";
 
 export default function Blog() {
   const dispatch = useDispatch();
@@ -59,6 +60,21 @@ export default function Blog() {
 
   return (
     <BaseLayout title="Gabriel Kaszewski - Blog">
+      <NextSeo
+        title="Gabriel Kaszewski - Blog"
+        description="Gabriel Kaszewski's blog"
+        openGraph={{
+          title: "Gabriel Kaszewski - Blog",
+          url: `https://gabrielkaszewski.netlify.app/blog/`,
+          description: "Gabriel Kaszewski's blog",
+          site_name: "Gabriel Kaszewski - Blog",
+        }}
+        twitter={{
+          handle: "@handle",
+          site: "@site",
+          cardType: "summary_large_image",
+        }}
+      />
       <span className="m-12 md:m-8" />
       <div className="flex gap-2 items-center">
         <SideNavComponent>
