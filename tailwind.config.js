@@ -20,6 +20,9 @@ module.exports = {
               color: theme('colors.gray.100'),
               fontWeight: theme('fontWeight.bold'),
             },
+            code: {
+              color: theme('colors.green.500')
+            },
             a: {
               color: theme('colors.green.500'),
               '&:hover': {

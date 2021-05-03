@@ -23,7 +23,7 @@ export default function PostComponent(props: Props) {
       <h6 className="text-lg font-light">
         {new Date(props.data.created_on).toDateString()}
       </h6>
-      <div className="prose md:prose-lg xl:prose-xl  max-w-none">
+      <div className="prose xl:prose-lg max-w-none">
         <ReactMarkdown
           className="whitespace-pre-wrap"
           plugins={[gfm]}
