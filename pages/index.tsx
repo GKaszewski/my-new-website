@@ -9,6 +9,7 @@ import BackgroundVideoComponent from "../src/components/backgroundvideo";
 import { TextSection } from "../src/components/textsection";
 import fetchJobs from "../src/redux/dispatchers/job/fetchJobs";
 import JobComponent from "../src/components/job";
+import { NextSeo } from "next-seo";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -30,6 +31,21 @@ export default function Home() {
 
   return (
     <BaseLayout title="Gabriel Kaszewski">
+      <NextSeo
+        title="Gabriel Kaszewski"
+        description="Gabriel Kaszewski's personal website."
+        openGraph={{
+          title: "Gabriel Kaszewski",
+          url: `https://gabrielkaszewski.pl/`,
+          description: "Gabriel Kaszewski's personal website",
+          site_name: "Gabriel Kaszewski",
+        }}
+        twitter={{
+          handle: "@handle",
+          site: "@site",
+          cardType: "summary_large_image",
+        }}
+      />
       <div className="w-full">
         <BackgroundVideoComponent source="/test.webm" text="" />
       </div>
