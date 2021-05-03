@@ -16,7 +16,7 @@ export default function PostPage(props: Props) {
     <BaseLayout title={`Gabriel Kaszewski - ${props.data.title}`}>
       <NextSeo title={`Gabriel Kaszewski - ${props.data.title}`} description={`${props.data.content.slice(0, 100)}...`} openGraph={{
         title: props.data.title,
-        url: `https://gabrielkaszewski.netlify.app/blog/${props.data.slug}`,
+        url: `https://gabrielkaszewski.pl/blog/${props.data.slug}`,
         description: `${props.data.content.slice(0, 100)}...`,
         site_name: 'Gabriel Kaszewski - Blog'
       }} twitter={{
@@ -25,7 +25,7 @@ export default function PostPage(props: Props) {
         cardType: 'summary_large_image'
       }}/>
       <BlogJsonLd
-        url={`https://gabrielkaszewski.netlify.app/blog/${props.data.slug}`}
+        url={`https://gabrielkaszewski.pl/blog/${props.data.slug}`}
         title={props.data.title}
         datePublished={new Date(props.data.created_on).toISOString()}
         dateModified={new Date(props.data.created_on).toISOString()}
