@@ -1,9 +1,7 @@
 import Head from "next/head";
 import React, { FunctionComponent } from "react";
-import { Skill } from "../redux/types";
 import Footbar from "./footbar";
 import NavigationBar from "./navigationbar";
-import SkillComponent from "./skillcomponent";
 
 interface Props {
   title: string;
