@@ -1,3 +1,5 @@
+import { NextSeo } from "next-seo";
+import React from "react";
 import { BaseLayout } from "../src/components/baselayout";
 import ChipComponent from "../src/components/chip";
 import FaqElement from "../src/components/faqelement";
@@ -7,6 +9,35 @@ import { TextSection } from "../src/components/textsection";
 export default function AboutPage() {
   return (
     <BaseLayout title="Gabriel Kaszewski - About">
+      <NextSeo
+        title="Gabriel Kaszewski - About"
+        description={`I am a ${
+          new Date().getFullYear() - 2002
+        } years old male. I was born in
+        a little town in Poland called Bytów on 27th February 2002. I am 1.71
+        meters tall or for you Americans 5'61". Currently, I am a senior in
+        III High School in Gdańsk where I attend as a student of bilingual
+        class with advanced Math and Physics. I speak Polish, English and I am
+        learning Spanish.`}
+        openGraph={{
+          title: "Gabriel Kaszewski - About",
+          url: `https://gabrielkaszewski.pl/about`,
+          description: `I am a ${
+            new Date().getFullYear() - 2002
+          } years old male. I was born in
+          a little town in Poland called Bytów on 27th February 2002. I am 1.71
+          meters tall or for you Americans 5'61". Currently, I am a senior in
+          III High School in Gdańsk where I attend as a student of bilingual
+          class with advanced Math and Physics. I speak Polish, English and I am
+          learning Spanish.`,
+          site_name: "Gabriel Kaszewski",
+        }}
+        twitter={{
+          handle: "@handle",
+          site: "@site",
+          cardType: "summary_large_image",
+        }}
+      />
       <span className="m-8" />
       <PictureFrame src="/ja.jpg" width={300} height={300} />
       <h1 className="text-3xl font-bold">More info about me!</h1>
