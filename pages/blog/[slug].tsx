@@ -5,7 +5,7 @@ import { BaseLayout } from "../../src/components/baselayout";
 import { Post } from "../../src/redux/types";
 import { BASE_URL } from "../../src/utils/ApiData";
 import PostComponent from "../../src/components/post";
-import { BlogJsonLd } from "next-seo";
+import { BlogJsonLd, NextSeo } from "next-seo";
 
 interface Props {
   data: Post;
@@ -14,6 +14,16 @@ interface Props {
 export default function PostPage(props: Props) {
   return (
     <BaseLayout title={`Gabriel Kaszewski - ${props.data.title}`}>
+      <NextSeo title={`Gabriel Kaszewski - ${props.data.title}`} description={`${props.data.content.slice(0, 100)}...`} openGraph={{
+        title: props.data.title,
+        url: `https://gabrielkaszewski.netlify.app/blog/${props.data.slug}`,
+        description: `${props.data.content.slice(0, 100)}...`,
+        site_name: 'Gabriel Kaszewski - Blog'
+      }} twitter={{
+        handle: '@handle',
+        site: '@site',
+        cardType: 'summary_large_image'
+      }}/>
       <BlogJsonLd
         url={`https://gabrielkaszewski.netlify.app/blog/${props.data.slug}`}
         title={props.data.title}
