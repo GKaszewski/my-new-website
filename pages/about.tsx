@@ -40,7 +40,7 @@ export default function AboutPage() {
       />
       <span className="m-8" />
       <PictureFrame src="/ja.jpg" width={300} height={300} />
-      <h1 className="text-3xl font-bold">More info about me!</h1>
+      <h1 className="text-3xl font-extrabold">More info about me!</h1>
       <TextSection>
         <p>
           I am a {new Date().getFullYear() - 2002} years old male. I was born in
@@ -51,7 +51,7 @@ export default function AboutPage() {
           learning Spanish.
         </p>
       </TextSection>
-      <h1 className="text-3xl font-bold">Hobbies</h1>
+      <h1 className="text-3xl font-extrabold">Hobbies</h1>
       <div className="flex flex-wrap gap-4 m-4 md:m-0 md:w-1/2 justify-center items-center">
         <ChipComponent label="Programming" />
         <ChipComponent label="Filmmaking" />

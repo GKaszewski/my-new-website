@@ -78,7 +78,7 @@ export default function Blog() {
       <span className="m-12 md:m-8" />
       <div className="flex gap-2 items-center">
         <SideNavComponent>
-          <h3>Categories</h3>
+          <h3 className="mx-auto">Categories</h3>
           <div className="flex flex-col m-4 gap-4">
             <Button
               callback={() => {

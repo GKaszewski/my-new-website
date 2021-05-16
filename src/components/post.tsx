@@ -19,11 +19,18 @@ const renderers = {
 export default function PostComponent(props: Props) {
   return (
     <div className="flex flex-col justify-center m-4">
-      <h3 className="text-3xl font-bold">{props.data.title}</h3>
-      <h6 className="text-lg font-light">
-        {new Date(props.data.created_on).toDateString()}
-      </h6>
-      <div className="prose xl:prose-lg max-w-none">
+      <header className="">
+        <h1 className="flex flex-col items-center">
+          <span className="font-extrabold tracking-tight text-3xl md:text-5xl">
+            {props.data.title}
+          </span>
+          <span className="font-semibold tracking-wide text-lg mt-1">
+            {new Date(props.data.created_on).toDateString()}
+          </span>
+        </h1>
+        <hr className="mt-8 border-t-2 w-20 mx-auto" />
+      </header>
+      <div className="prose lg:prose-lg xl:prose-xl mx-auto">
         <ReactMarkdown
           className="whitespace-pre-wrap"
           plugins={[gfm]}

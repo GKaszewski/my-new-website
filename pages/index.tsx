@@ -13,12 +13,16 @@ import { NextSeo } from "next-seo";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const { pending: skills_pending, skills, error: skills_error } = useSelector(
-    (state) => state.skillsReducer
-  );
-  const { pending: jobs_pending, jobs, error: jobs_error } = useSelector(
-    (state) => state.jobsReducer
-  );
+  const {
+    pending: skills_pending,
+    skills,
+    error: skills_error,
+  } = useSelector((state) => state.skillsReducer);
+  const {
+    pending: jobs_pending,
+    jobs,
+    error: jobs_error,
+  } = useSelector((state) => state.jobsReducer);
   useEffect(() => {
     dispatch(fetchSkills());
     dispatch(fetchJobs());
@@ -47,13 +51,16 @@ export default function Home() {
         }}
       />
       <div className="w-full">
-        <BackgroundVideoComponent source="/test.webm" text="" />
+        <BackgroundVideoComponent
+          source="/test.webm"
+          text="Full-stack Developer"
+        />
       </div>
+      <h3 className="text-5xl font-bold mt-4 mb-2 tracking-tight">Who am I?</h3>
       <TextSection>
-        <h3 className="text-5xl font-bold">Who am I?</h3>
-        <p className="text-xl">{aboutMeSection}</p>
+        <p>{aboutMeSection}</p>
       </TextSection>
-      <h3 className="text-5xl font-bold">Skills</h3>
+      <h3 className="text-5xl font-bold mt-4 mb-2 tracking-tight">Skills</h3>
       <div className="flex flex-wrap w-1/2 gap-4 justify-center">
         <Spinner open={skills_pending} />
         {skills_error && (
@@ -65,7 +72,9 @@ export default function Home() {
           return <SkillComponent key={`${skill}-${i}`} skill={skill} />;
         })}
       </div>
-      <h3 className="text-5xl font-bold">Experience</h3>
+      <h3 className="text-5xl font-bold mt-4 mb-2 tracking-tight">
+        Experience
+      </h3>
       <Spinner open={jobs_pending} />
       <div className="flex flex-wrap w-1/2 gap-4 justify-center m-4">
         {jobs_error && (
