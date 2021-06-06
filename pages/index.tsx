@@ -29,9 +29,9 @@ export default function Home() {
   }, []);
 
   const aboutMeSection = `
-	Hi, my name is Gabriel Kaszewski and I am a High School student and self-taught full stack developer. I started coding when I was 11.
-	I love solving problems and I hope that I'll work in one of FAANG companies in the future. Currently I am looking for a job as full-stack developer.
-	I am very passionate about Computer Science and after High School, I'm planning on studying it.`;
+	Hi, my name is Gabriel Kaszewski and I am a High School graduate and self-taught full stack developer. I started coding when I was 11.
+	I love solving problems and I hope that I'll work in one of FAANG companies in the future. Currently I am working as Python Developer at digimonkeys.com.
+	I am very passionate about Computer Science and I'm planning on studying it.`;
 
   return (
     <BaseLayout title="Gabriel Kaszewski">
