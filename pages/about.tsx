@@ -16,8 +16,9 @@ export default function AboutPage() {
         } years old male. I was born in
         a little town in Poland called Bytów on 27th February 2002. I am 1.71
         meters tall or for you Americans 5'61". I graduated the III High School in Gdańsk where 
-        I attendened as a student of bilingual class with advanced Math and Physics. 
-        I speak Polish, English and I am learning Spanish. Currently, I am working as Python Developer at digimonkeys.com.`}
+        I attendened as a student of bilingual class with advanced Math and Physics, and now I am a Bioinformatics student at
+        the University of Gdańsk. I speak Polish, English and I am learning Spanish. Currently, I am working as 
+        Python Developer at digimonkeys.com.`}
         openGraph={{
           title: "Gabriel Kaszewski - About",
           url: `https://gabrielkaszewski.pl/about`,
@@ -26,8 +27,9 @@ export default function AboutPage() {
           } years old male. I was born in
           a little town in Poland called Bytów on 27th February 2002. I am 1.71
           meters tall or for you Americans 5'61". I graduated the III High School in Gdańsk where 
-          I attendened as a student of bilingual class with advanced Math and Physics. 
-          I speak Polish, English and I am learning Spanish. Currently, I am working as Python Developer at digimonkeys.com.`,
+          I attendened as a student of bilingual class with advanced Math and Physics, and now I am a Bioinformatics student at
+          the University of Gdańsk. I speak Polish, English and I am learning Spanish. Currently, I am working as 
+          Python Developer at digimonkeys.com.`,
           site_name: "Gabriel Kaszewski",
         }}
         twitter={{
@@ -41,11 +43,14 @@ export default function AboutPage() {
       <h1 className="text-3xl font-extrabold">More info about me!</h1>
       <TextSection>
         <p>
-        I am a {new Date().getFullYear() - 2002} years old male. I was born in
-        a little town in Poland called Bytów on 27th February 2002. I am 1.71
-        meters tall or for you Americans 5'61". I graduated the III High School in Gdańsk where 
-        I attendened as a student of bilingual class with advanced Math and Physics. 
-        I speak Polish, English and I am learning Spanish. Currently, I am working as Python Developer at digimonkeys.com
+          I am a {new Date().getFullYear() - 2002} years old male. I was born in
+          a little town in Poland called Bytów on 27th February 2002. I am 1.71
+          meters tall or for you Americans 5'61". I graduated the III High
+          School in Gdańsk where I attendened as a student of bilingual class
+          with advanced Math and Physics, and now I am a Bioinformatics student
+          at the University of Gdańsk. I speak Polish, English and I am learning
+          Spanish. Currently, I am working as Python Developer at
+          digimonkeys.com.
         </p>
       </TextSection>
       <h1 className="text-3xl font-extrabold">Hobbies</h1>
@@ -53,7 +58,7 @@ export default function AboutPage() {
         <ChipComponent label="Programming" />
         <ChipComponent label="Filmmaking" />
         <ChipComponent label="Working out" />
-        <ChipComponent label="Playing ukulele" />
+        <ChipComponent label="Playing ukulele & guitar" />
       </div>
       <h1 className="text-3xl font-bold">Interests</h1>
       <div className="flex flex-wrap gap-4 m-4 md:m-0 md:w-1/2 justify-center items-center">
@@ -77,7 +82,7 @@ export default function AboutPage() {
         />
         <FaqElement
           question="Are you studying Computer Science?"
-          answer="Nope, not yet."
+          answer="No, I do not study Computer Science but I do study Bioinformatics."
         />
         <FaqElement
           question="Which programming language you recommend for a beginner?"
