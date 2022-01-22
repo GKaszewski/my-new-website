@@ -7,7 +7,7 @@ import {
 } from "../../actions/postActions";
 import { Post } from "../../types";
 
-const fetchPosts = () => {
+const fetchDrafts = () => {
   return (dispatch) => {
     dispatch(fetchDraftsPending());
     axios
@@ -20,4 +20,4 @@ const fetchPosts = () => {
   };
 };
 
-export default fetchPosts;
+export default fetchDrafts;
