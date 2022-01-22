@@ -1,5 +1,4 @@
 import React from "react";
-import { Post } from "../redux/types";
 import gfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
@@ -19,9 +18,9 @@ const renderers = {
 
 export default function PreviewPost(props: Props) {
   return (
-    <div className="w-full h-full rounded-lg bg-gray-100 text-black">
+    <div className="w-full h-full rounded-lg bg-gray-900 prose lg:prose-lg xl:prose-xl mx-auto overflow-y-scroll overscroll-y-auto">
       <ReactMarkdown
-        className="whitespace-pre-wrap"
+        className="whitespace-pre-wrap flex flex-col justify-center items-center"
         plugins={[gfm]}
         renderers={renderers}
       >

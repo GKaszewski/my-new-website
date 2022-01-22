@@ -1,13 +1,11 @@
-import {
-  faGithub,
-  faLinkedinIn,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import React from "react";
+import { useSelector } from "react-redux";
 
 export default function Footbar() {
+  const { loggedIn } = useSelector((state) => state.authReducer);
+
   return (
     <div className="flex flex-col bg-gray-900 w-full p-4 gap-4">
       <div className="flex gap-2">
@@ -34,6 +32,11 @@ export default function Footbar() {
         <Link href="/blog">
           <a>Blog</a>
         </Link>
+        {loggedIn && (
+          <Link href="/blog/editor">
+            <a>Editor</a>
+          </Link>
+        )}
         <Link href="/contact">
           <a>Contact</a>
         </Link>
