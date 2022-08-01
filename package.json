@@ -22,6 +22,7 @@
     "react-redux": "^7.2.2",
     "react-responsive-carousel": "^3.2.11",
     "react-syntax-highlighter": "^15.4.3",
+    "react-unity-webgl": "^8.8.0",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
