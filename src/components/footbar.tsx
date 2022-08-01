@@ -27,6 +27,11 @@ export default function Footbar() {
 					reserved.
 				</p>
 				<span className="flex-1" />
+				{loggedIn && (
+					<a href="https://gabrielkaszewski.pl/api/admin">
+						Admin page
+					</a>
+				)}
 				<Link href="/projects">
 					<a>Projects</a>
 				</Link>

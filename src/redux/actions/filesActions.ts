@@ -12,6 +12,9 @@ export enum FilesActionKeys {
 	UPLOAD_FILE_PENDING = "UPLOAD_FILE_PENDING",
 	UPLOAD_FILE_SUCCESS = "UPLOAD_FILE_SUCCESS",
 	UPLOAD_FILE_ERROR = "UPLOAD_FILE_ERROR",
+	DELETE_FILE_PENDING = "DELETE_FILE_PENDING",
+	DELETE_FILE_SUCCESS = "DELETE_FILE_SUCCESS",
+	DELETE_FILE_ERROR = "DELETE_FILE_ERROR",
 }
 
 type FetchFilesPending = IFileActionType<FilesActionKeys.FETCH_FILES_PENDING>;
@@ -28,13 +31,20 @@ type UploadFileSuccess = IFileActionType<
 >;
 type UploadFileError = IFileActionType<FilesActionKeys.UPLOAD_FILE_ERROR, any>;
 
+type DeleteFilePending = IFileActionType<FilesActionKeys.DELETE_FILE_PENDING>;
+type DeleteFileSuccess = IFileActionType<FilesActionKeys.DELETE_FILE_SUCCESS>;
+type DeleteFileError = IFileActionType<FilesActionKeys.DELETE_FILE_ERROR, any>;
+
 export type FileActions =
 	| FetchFilesPending
 	| FetchFilesSuccess
 	| FetchFileError
 	| UploadFilePending
 	| UploadFileSuccess
-	| UploadFileError;
+	| UploadFileError
+	| DeleteFilePending
+	| DeleteFileSuccess
+	| DeleteFileError;
 
 export const fetchFilePending = (): FileActions => {
 	return {
@@ -72,6 +82,25 @@ export const uploadFileSuccess = (file: FileFromBackend): FileActions => {
 export const uploadFileError = (error: any): FileActions => {
 	return {
 		type: FilesActionKeys.UPLOAD_FILE_ERROR,
+		payload: error,
+	};
+};
+
+export const deleteFilePending = (): FileActions => {
+	return {
+		type: FilesActionKeys.DELETE_FILE_PENDING,
+	};
+};
+
+export const deleteFileSuccess = (): FileActions => {
+	return {
+		type: FilesActionKeys.DELETE_FILE_SUCCESS,
+	};
+};
+
+export const deleteFileError = (error: any): FileActions => {
+	return {
+		type: FilesActionKeys.DELETE_FILE_ERROR,
 		payload: error,
 	};
 };
