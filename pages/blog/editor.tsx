@@ -180,7 +180,7 @@ export default function BlogEditorPage() {
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-2 min-w-full">
 				<div
 					onDrop={(event) => onFileDrop(event)}
-					className="flex flex-col h-5/6 bg-green-400"
+					className="flex flex-col h-5/6"
 				>
 					<p className="text-lg font-semibold">Content</p>
 					<TextArea value={content} rows={12} onChange={setContent} />
