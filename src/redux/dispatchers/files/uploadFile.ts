@@ -9,15 +9,17 @@ import {
 export const uploadFile = (file: File, token: string) => {
 	return (dispatch) => {
 		dispatch(uploadFilePending());
+		const formData = new FormData();
+		formData.append("file", file);
 		axios
-			.post(`${BASE_URL}/files/`, file, {
+			.post(`${BASE_URL}/files/`, formData, {
 				headers: {
 					Authorization: `Token ${token}`,
 				},
 			})
 			.then((res) => {
-				console.log(res.data);
-				dispatch(uploadFileSuccess(file));
+				dispatch(uploadFileSuccess(res.data));
+				return res.data;
 			})
 			.catch((err) => dispatch(uploadFileError(err)));
 	};

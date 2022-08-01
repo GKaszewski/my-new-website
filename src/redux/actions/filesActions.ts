@@ -24,7 +24,7 @@ type FetchFileError = IFileActionType<FilesActionKeys.FETCH_FILES_ERROR, any>;
 type UploadFilePending = IFileActionType<FilesActionKeys.UPLOAD_FILE_PENDING>;
 type UploadFileSuccess = IFileActionType<
 	FilesActionKeys.UPLOAD_FILE_SUCCESS,
-	File
+	FileFromBackend
 >;
 type UploadFileError = IFileActionType<FilesActionKeys.UPLOAD_FILE_ERROR, any>;
 
@@ -62,7 +62,7 @@ export const uploadFilePending = (): FileActions => {
 	};
 };
 
-export const uploadFileSuccess = (file: File): FileActions => {
+export const uploadFileSuccess = (file: FileFromBackend): FileActions => {
 	return {
 		type: FilesActionKeys.UPLOAD_FILE_SUCCESS,
 		payload: file,

@@ -6,7 +6,7 @@ interface State {
 	fetchError: any;
 	uploadPending: boolean;
 	uploadError: any;
-	uploadedFile: File;
+	uploadedFile: FileFromBackend;
 	files: FileFromBackend[];
 }
 
