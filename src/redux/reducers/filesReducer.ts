@@ -1,15 +1,21 @@
 import { FileActions, FilesActionKeys } from "../actions/filesActions";
-import { File } from "../types";
+import { FileFromBackend } from "../types";
 
 interface State {
 	fetchPending: boolean;
 	fetchError: any;
-	files: File[];
+	uploadPending: boolean;
+	uploadError: any;
+	uploadedFile: File;
+	files: FileFromBackend[];
 }
 
 const initialState: State = {
 	fetchPending: false,
 	fetchError: null,
+	uploadPending: false,
+	uploadError: null,
+	uploadedFile: null,
 	files: [],
 };
 
@@ -36,6 +42,27 @@ export const filesReducer = (
 				...state,
 				fetchPending: false,
 				fetchError: action.payload,
+			};
+		case FilesActionKeys.UPLOAD_FILE_PENDING:
+			return {
+				...state,
+				uploadPending: true,
+				uploadError: null,
+				uploadedFile: null,
+			};
+		case FilesActionKeys.UPLOAD_FILE_SUCCESS:
+			return {
+				...state,
+				uploadPending: false,
+				uploadError: null,
+				uploadedFile: action.payload,
+			};
+		case FilesActionKeys.UPLOAD_FILE_ERROR:
+			return {
+				...state,
+				uploadPending: false,
+				uploadError: action.payload,
+				uploadedFile: null,
 			};
 		default:
 			return state;

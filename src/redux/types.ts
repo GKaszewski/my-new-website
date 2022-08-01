@@ -43,7 +43,11 @@ export interface Job {
 	technologies: string[];
 }
 
-export interface File {
+export interface FileUpload {
+	data: File;
+}
+
+export interface FileFromBackend {
 	file_id: number;
 	file: string;
 	since_added: Date;
@@ -57,5 +61,5 @@ export interface StoreState {
 	posts: Post[];
 	trivias: Trivia[];
 	loggedIn: boolean;
-	fetchedFiles: File[];
+	fetchedFiles: FileFromBackend[];
 }
