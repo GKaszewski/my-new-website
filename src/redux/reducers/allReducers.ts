@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import { authReducer } from "./authReducer";
 import { editorReducer } from "./editorReducer";
+import { filesReducer } from "./filesReducer";
 import { jobsReducer } from "./jobReducer";
 import { postsReducer } from "./postReducer";
 import { projectsReducer } from "./projectReducer";
@@ -9,12 +10,13 @@ import { skillReducer } from "./skillReducer";
 import { triviaReducer } from "./triviaReducer";
 
 export default combineReducers({
-  projectsReducer: projectsReducer,
-  postsReducer: postsReducer,
-  authReducer: authReducer,
-  triviasReducer: triviaReducer,
-  skillsReducer: skillReducer,
-  jobsReducer: jobsReducer,
-  sidebarReducer: sideBarReducer,
-  blogEditorReducer: editorReducer,
+	projectsReducer,
+	postsReducer,
+	authReducer,
+	triviasReducer: triviaReducer,
+	skillsReducer: skillReducer,
+	jobsReducer,
+	sidebarReducer: sideBarReducer,
+	blogEditorReducer: editorReducer,
+	filesReducer,
 });
