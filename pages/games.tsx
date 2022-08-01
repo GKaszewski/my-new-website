@@ -1,5 +1,6 @@
 import Unity, { UnityContext } from "react-unity-webgl";
 import { BaseLayout } from "../src/components/baselayout";
+import { Button } from "../src/components/button";
 
 const unityContext = new UnityContext({
 	loaderUrl: "https://gabrielkaszewski.pl/media/webgl.loader.js",
@@ -11,7 +12,12 @@ const unityContext = new UnityContext({
 const GamesPage = () => {
 	return (
 		<BaseLayout title="Games">
-			<Unity unityContext={unityContext} />
+			<Unity className="w-full" unityContext={unityContext} />
+			<div className="w-32">
+				<Button callback={() => unityContext.setFullscreen(true)}>
+					Set fullscreen
+				</Button>
+			</div>
 		</BaseLayout>
 	);
 };
