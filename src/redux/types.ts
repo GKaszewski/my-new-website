@@ -7,7 +7,11 @@ export interface Project {
 	githubUrl: string;
 	downloadUrl: string;
 	visitUrl: string;
-	thumbnailUrls: string[];
+	thumbnails: Thumbnail[];
+}
+
+interface Thumbnail {
+	file: string;
 }
 
 interface Author {
