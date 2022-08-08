@@ -3,10 +3,10 @@ import { BaseLayout } from "../src/components/baselayout";
 import { Button } from "../src/components/button";
 
 const unityContext = new UnityContext({
-	loaderUrl: "https://gabrielkaszewski.pl/media/webgl.loader.js",
-	dataUrl: "https://gabrielkaszewski.pl/media/webgl.data",
-	frameworkUrl: "https://gabrielkaszewski.pl/media/webgl.framework.js",
-	codeUrl: "https://gabrielkaszewski.pl/media/webgl.wasm",
+	loaderUrl: "https://gabrielkaszewski.pl/media/sammy.loader.js",
+	dataUrl: "https://gabrielkaszewski.pl/media/sammy.data.gz",
+	frameworkUrl: "https://gabrielkaszewski.pl/media/sammy.framework.js.gz",
+	codeUrl: "https://gabrielkaszewski.pl/media/sammy.wasm.gz",
 });
 
 const GamesPage = () => {
