@@ -8,6 +8,7 @@ import { BaseLayout } from "../src/components/baselayout";
 import { GetStaticProps } from "next";
 import axios from "axios";
 import { BASE_URL } from "../src/utils/ApiData";
+import { NextSeo } from "next-seo";
 
 interface Props {
 	staticData: Project[];
@@ -24,6 +25,21 @@ export default function Projects(props: Props) {
 
 	return (
 		<BaseLayout title="Gabriel Kaszewski - Projects">
+			<NextSeo
+				title="Gabriel Kaszewski's portfolio"
+				description="Gabriel Kaszewski's projects"
+				openGraph={{
+					title: "Gabriel Kaszewski's portfolio",
+					url: `https://gabrielkaszewski.pl/`,
+					description: "Gabriel Kaszewski's projects",
+					site_name: "Gabriel Kaszewski - Projects",
+				}}
+				twitter={{
+					handle: "@handle",
+					site: "@site",
+					cardType: "summary_large_image",
+				}}
+			/>
 			<span className="m-8" />
 			<div className="flex flex-col w-full m-4 gap-4">
 				<h1 className="text-5xl text-center font-bold">My projects</h1>

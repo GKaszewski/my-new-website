@@ -54,6 +54,7 @@ export default function Footbar() {
 				<Link href="/login">
 					<a>Login</a>
 				</Link>
+				<a href="http://media.gabrielkaszewski.pl/">Media</a>
 			</div>
 		</div>
 	);

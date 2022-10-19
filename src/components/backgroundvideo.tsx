@@ -13,7 +13,6 @@ export default function BackgroundVideoComponent(props: Props) {
         autoPlay
         muted
         playsInline
-        poster="/poster.webp"
         loop
       >
         <source src={props.source} type="video/webm" />

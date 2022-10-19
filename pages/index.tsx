@@ -30,7 +30,7 @@ export default function Home() {
 
   const aboutMeSection = `
 	Hi, my name is Gabriel Kaszewski and I am a Bioinformatics student and self-taught full stack developer. I started coding when I was 11.
-	I love solving problems and I hope that I'll work in one of FAANG companies in the future. Currently I am working as Python Developer at digimonkeys.com.
+	I love solving problems and writing software. Currently I am working as Python Developer at digimonkeys.com.
 	I am very passionate about Computer Science.`;
 
   return (
