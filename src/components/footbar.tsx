@@ -28,7 +28,7 @@ export default function Footbar() {
 				</p>
 				<span className="flex-1" />
 				{loggedIn && (
-					<a href="https://gabrielkaszewski.pl/api/admin">
+					<a href="https://gabrielkaszewski.dev/api/admin">
 						Admin page
 					</a>
 				)}
@@ -54,7 +54,7 @@ export default function Footbar() {
 				<Link href="/login">
 					<a>Login</a>
 				</Link>
-				<a href="http://media.gabrielkaszewski.pl/">Media</a>
+				<a href="http://media.gabrielkaszewski.dev/">Media</a>
 			</div>
 		</div>
 	);
