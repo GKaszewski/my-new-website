@@ -4,9 +4,9 @@ import { Button } from "../src/components/button";
 
 const unityContext = new UnityContext({
 	loaderUrl: "https://gabrielkaszewski.dev/media/Builds.loader.js",
-	dataUrl: "https://gabrielkaszewski.dev/media/Builds.data.br",
-	frameworkUrl: "https://gabrielkaszewski.dev/media/Builds.framework.js.br",
-	codeUrl: "https://gabrielkaszewski.dev/media/Builds.wasm.br",
+	dataUrl: "https://gabrielkaszewski.dev/media/Builds.data.gz",
+	frameworkUrl: "https://gabrielkaszewski.dev/media/Builds.framework.js.gz",
+	codeUrl: "https://gabrielkaszewski.dev/media/Builds.wasm.gz",
 });
 
 const GamesPage = () => {
