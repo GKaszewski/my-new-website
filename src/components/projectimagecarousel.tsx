@@ -18,7 +18,7 @@ export default function ProjectImageCarousel(props: Props) {
         swipeable
       >
         {props.urls.map((url, i) => {
-          return <img key={`${url}-${i}`} src={url} />;
+          return <img alt="project-image" key={`${url}-${i}`} src={url} />;
         })}
       </Carousel>
     </div>

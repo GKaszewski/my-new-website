@@ -3,18 +3,19 @@ import { Project } from "../redux/types";
 import ProjectImageCarousel from "./projectimagecarousel";
 import ChipComponent from "./chip";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 interface Props {
 	project: Project;
 }
 
 export default function ProjectPanel(props: Props) {
 	return (
-		<div className="flex w-full h-full items-center justify-between gap-4">
+		<div className="flex w-full h-full items-center justify-between gap-4 text-white">
 			<div className="flex flex-col md:w-1/3 gap-4 m-4">
 				<div className="prose">
 					<h1 className="">{props.project.name}</h1>
 					<p className="whitespace-pre-wrap">
-						{props.project.description}
+						{props.project.shortDescription}
 					</p>
 				</div>
 				{props.project.technology && (
@@ -24,6 +25,9 @@ export default function ProjectPanel(props: Props) {
 						})}
 					</div>
 				)}
+				<Link className="p-2 w-full text-center rounded-xl border border-yellow-400 hover:bg-yellow-400" href={`/projects/${props.project.name}`}>
+					Read More
+				</Link>
 				<div className="flex flex-wrap gap-2 sm:justify-center md:justify-start">
 					{props.project.githubUrl && (
 						<a
