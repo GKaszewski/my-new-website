@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from "react";
+import React, {FunctionComponent, PropsWithChildren} from "react";
 
-interface Props {
+interface Props extends PropsWithChildren {
   callback?: (e: any) => void;
   className?: string;
 }
