@@ -46,4 +46,5 @@ const MyApp: FC<AppProps> = ({Component, ...rest}) => {
 		</React.Fragment>
 	);
 }
+
 export default MyApp;

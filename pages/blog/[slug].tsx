@@ -16,9 +16,8 @@ export default function PostPage(props: Props) {
     <BaseLayout title={`Gabriel Kaszewski - ${props.data.title}`}>
       <NextSeo title={`Gabriel Kaszewski - ${props.data.title}`} description={`${props.data.content.slice(0, 100)}...`} openGraph={{
         title: props.data.title,
-        url: `https://gabrielkaszewski.pl/blog/${props.data.slug}`,
+        url: `https://gabrielkaszewski.dev/blog/${props.data.slug}`,
         description: `${props.data.content.slice(0, 100)}...`,
-        site_name: 'Gabriel Kaszewski - Blog'
       }} twitter={{
         handle: '@handle',
         site: '@site',

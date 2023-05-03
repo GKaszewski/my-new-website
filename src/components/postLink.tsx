@@ -8,8 +8,8 @@ interface Props {
 
 export default function PostLink(props: Props) {
   return (
-    <Link href={`/blog/${encodeURIComponent(props.data.slug)}`}>
-      <a className="hover:underline">{props.data.title}</a>
+    <Link className="hover:underline" href={`/blog/${encodeURIComponent(props.data.slug)}`}>
+        {props.data.title}
     </Link>
   );
 }

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { DragEventHandler, useEffect, useState } from "react";
-import { useDispatch, useSelector, useStore } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { BaseLayout } from "../../src/components/baselayout";
 import { Button } from "../../src/components/button";
 import { PostEditorSelection } from "../../src/components/posteditorselection";
@@ -14,7 +14,7 @@ import modifyPost from "../../src/redux/dispatchers/blog/modifyPost";
 import uploadDraft from "../../src/redux/dispatchers/blog/uploadDraft";
 import uploadPost from "../../src/redux/dispatchers/blog/uploadPost";
 import { uploadFile } from "../../src/redux/dispatchers/files/uploadFile";
-import { FileFromBackend, Post } from "../../src/redux/types";
+import { Post } from "../../src/redux/types";
 
 export default function BlogEditorPage() {
 	const dispatch = useDispatch();
@@ -52,7 +52,7 @@ export default function BlogEditorPage() {
 					You are not authenticated.
 				</h1>
 				<Link href="/login">
-					<a>Login</a>
+					Login
 				</Link>
 			</BaseLayout>
 		);

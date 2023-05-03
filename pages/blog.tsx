@@ -1,4 +1,4 @@
-import React, { useEffect, useState, FormEvent } from "react";
+import React, { useEffect, useState } from "react";
 import { BaseLayout } from "../src/components/baselayout";
 import { useDispatch, useSelector } from "react-redux";
 import fetchPosts from "../src/redux/dispatchers/blog/fetchPosts";
@@ -65,9 +65,8 @@ export default function Blog() {
         description="Gabriel Kaszewski's blog"
         openGraph={{
           title: "Gabriel Kaszewski - Blog",
-          url: `https://gabrielkaszewski.pl/blog/`,
+          url: `https://gabrielkaszewski.dev/blog/`,
           description: "Gabriel Kaszewski's blog",
-          site_name: "Gabriel Kaszewski - Blog",
         }}
         twitter={{
           handle: "@handle",

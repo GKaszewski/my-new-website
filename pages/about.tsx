@@ -24,9 +24,8 @@ export default function AboutPage() {
         description={infoText}
         openGraph={{
           title: "Gabriel Kaszewski - About",
-          url: `https://gabrielkaszewski.pl/about`,
+          url: `https://gabrielkaszewski.dev/about`,
           description: infoText,
-          site_name: "Gabriel Kaszewski - About",
         }}
         twitter={{
           handle: "@handle",

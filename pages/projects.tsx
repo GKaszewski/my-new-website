@@ -30,9 +30,8 @@ export default function Projects(props: Props) {
 				description="Gabriel Kaszewski's projects"
 				openGraph={{
 					title: "Gabriel Kaszewski's portfolio",
-					url: `https://gabrielkaszewski.pl/`,
+					url: `https://gabrielkaszewski.dev/projects`,
 					description: "Gabriel Kaszewski's projects",
-					site_name: "Gabriel Kaszewski - Projects",
 				}}
 				twitter={{
 					handle: "@handle",
@@ -43,7 +42,7 @@ export default function Projects(props: Props) {
 			<span className="m-8" />
 			<div className="flex flex-col w-full m-4 gap-4">
 				<h1 className="text-5xl text-center font-bold">My projects</h1>
-				{(pending || error) &&
+				{(pending || error) && props.staticData &&
 					props.staticData.map((project: Project) => {
 						return (
 							<ProjectPanel
@@ -71,8 +70,8 @@ export default function Projects(props: Props) {
 	);
 }
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
-	let projects = (await axios.get<Project[]>(`${BASE_URL}/projects`)).data;
+export const getStaticProps: GetStaticProps<Props> = async () => {
+	const projects = (await axios.get<Project[]>(`${BASE_URL}/projects`)).data;
 	return {
 		props: {
 			staticData: projects,
