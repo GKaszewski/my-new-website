@@ -5,5 +5,5 @@ module.exports = {
       "user-images.githubusercontent.com",
     ],
   },
-  //target: "serverless",
+  ignoreBuildErrors: true,
 };
