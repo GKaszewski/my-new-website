@@ -42,7 +42,7 @@ const Jobs = () => {
             Experience
         </h3>
         <Spinner open={jobs_pending}/>
-        <div className="flex flex-wrap w-1/2 gap-4 justify-center m-4">
+        <div className="flex flex-col flex-wrap gap-4 justify-center m-4">
             {jobs_error && (
                 <p className="text-red-600 text-xl font-bold">
                     Failed fetching jobs 😔

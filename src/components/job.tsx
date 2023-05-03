@@ -7,6 +7,11 @@ interface Props {
 }
 
 export default function JobComponent(props: Props) {
+    const formatDate = (date: string) => {
+        const dateObj = new Date(date);
+        return dateObj.getFullYear();
+    }
+
     return (
         <div className="bg-gray-100 rounded-lg p-4 text-black flex flex-col gap-2">
             <h4 className="text-2xl">
@@ -19,9 +24,9 @@ export default function JobComponent(props: Props) {
                 <FontAwesomeIcon icon={["fas", "clock"]}/> {props.job.time}
             </h6>
             {!props.job.still_working && <h6>
-                {props.job.start_date} - {props.job.end_date}
+                {formatDate(props.job.start_date)} - {formatDate(props.job.end_date)}
             </h6>}
-            {props.job.still_working && <h6>Still working</h6>}
+            {props.job.still_working && <h6>{formatDate(props.job.start_date)} - Present</h6>}
             <p className="font-bold">
                 <FontAwesomeIcon icon={["fas", "microchip"]}/> Technologies
             </p>
