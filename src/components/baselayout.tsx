@@ -1,9 +1,9 @@
 import Head from "next/head";
-import React, {FunctionComponent} from "react";
+import React, {FunctionComponent, PropsWithChildren} from "react";
 import Footbar from "./footbar";
 import NavigationBar from "./navigationbar";
 
-interface Props {
+interface Props extends PropsWithChildren {
     title: string;
 }
 
