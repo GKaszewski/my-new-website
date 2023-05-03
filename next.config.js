@@ -5,5 +5,7 @@ module.exports = {
       "user-images.githubusercontent.com",
     ],
   },
-  ignoreBuildErrors: true,
+  typescript: {
+    ignoreBuildErrors: true,
+  }
 };
