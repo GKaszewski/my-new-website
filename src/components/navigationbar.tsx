@@ -21,25 +21,25 @@ export default function NavigationBar() {
     return (
         <div
             className={`${nav ? 'fixed flex flex-col md:flex-row w-full justify-center items-center p-4 z-20 bg-gray-900 shadow-2xl' : 'fixed flex flex-col md:flex-row w-full justify-center items-center p-4 z-20 '}`}>
-            <Link href="/">
-                <a className="text-2xl ">Gabriel Kaszewski</a>
+            <Link className="text-2xl" href="/">
+                Gabriel Kaszewski
             </Link>
             <span className="flex-1"/>
             <div className="flex gap-4">
-                <Link href="/">
-                    <a className="text-lg">Home</a>
+                <Link className="text-lg" href="/">
+                    Home
                 </Link>
-                <Link href="/projects">
-                    <a className="text-lg">Projects</a>
+                <Link className="text-lg" href="/projects">
+                    Projects
                 </Link>
-                <Link href="/blog">
-                    <a className="text-lg">Blog</a>
+                <Link className="text-lg" href="/blog">
+                    Blog
                 </Link>
-                <Link href="/contact">
-                    <a className="text-lg">Contact</a>
+                <Link className="text-lg" href="/contact">
+                    Contact
                 </Link>
-                <Link href="/about">
-                    <a className="text-lg">About me</a>
+                <Link className="text-lg" href="/about">
+                    About me
                 </Link>
             </div>
         </div>

@@ -33,26 +33,26 @@ export default function Footbar() {
 					</a>
 				)}
 				<Link href="/projects">
-					<a>Projects</a>
+					Projects
 				</Link>
 				<Link href="/blog">
-					<a>Blog</a>
+					Blog
 				</Link>
 				{loggedIn && (
 					<Link href="/blog/editor">
-						<a>Editor</a>
+						Editor
 					</Link>
 				)}
 				{loggedIn && (
 					<Link href="/files">
-						<a>Files</a>
+						Files
 					</Link>
 				)}
 				<Link href="/contact">
-					<a>Contact</a>
+					Contact
 				</Link>
 				<Link href="/login">
-					<a>Login</a>
+					Login
 				</Link>
 				<a href="http://media.gabrielkaszewski.dev/">Media</a>
 			</div>
