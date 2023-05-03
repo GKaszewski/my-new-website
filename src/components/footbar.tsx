@@ -17,9 +17,6 @@ export default function Footbar() {
 				<a href="https://www.linkedin.com/in/gabriel-kaszewski-5344b3183">
 					<FontAwesomeIcon icon={["fab", "linkedin-in"]} />
 				</a>
-				<a href="https://twitter.com/GKaszewski">
-					<FontAwesomeIcon icon={["fab", "twitter"]} />
-				</a>
 			</div>
 			<div className="flex gap-2 text-sm">
 				<p className="font-semibold">

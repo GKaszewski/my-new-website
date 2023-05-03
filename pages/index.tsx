@@ -19,9 +19,8 @@ export default function Home() {
         description="Gabriel Kaszewski's personal website."
         openGraph={{
           title: "Gabriel Kaszewski",
-          url: `https://gabrielkaszewski.pl/`,
+          url: `https://gabrielkaszewski.dev/`,
           description: "Gabriel Kaszewski's personal website",
-          site_name: "Gabriel Kaszewski",
         }}
         twitter={{
           handle: "@handle",
