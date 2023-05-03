@@ -5,7 +5,6 @@ import { Provider, useDispatch } from "react-redux";
 import Store from "../src/redux/store";
 import { createWrapper } from "next-redux-wrapper";
 import { DefaultSeo } from "next-seo";
-import "tailwindcss/tailwind.css";
 import "../styles/globals.css";
 import "../src/utils/font-awesome";
 import signedIn from "../src/redux/dispatchers/auth/signedInAlready";

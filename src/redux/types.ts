@@ -45,6 +45,9 @@ export interface Job {
 	company: string;
 	time: string;
 	technologies: string[];
+	start_date: Date;
+	end_date: Date;
+	still_working: boolean;
 }
 
 export interface FileUpload {
