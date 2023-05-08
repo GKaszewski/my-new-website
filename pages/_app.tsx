@@ -7,6 +7,7 @@ import { DefaultSeo } from "next-seo";
 import "../styles/globals.css";
 import "../src/utils/font-awesome";
 import {AppProps} from "next/app";
+import Autologin from "../src/components/autologin";
 
 const makeStore = () => Store;
 const wrapper = createWrapper(makeStore);
@@ -32,6 +33,7 @@ const MyApp: FC<AppProps> = ({Component, ...rest}) => {
 				/>
 			</Head>
 			<Provider store={store}>
+				<Autologin />
 				<DefaultSeo
 					title="Gabriel Kaszewski"
 					description="Gabriel's Kaszewski personal website."
@@ -42,6 +44,7 @@ const MyApp: FC<AppProps> = ({Component, ...rest}) => {
 					}}
 				/>
 				<Component {...props} />
+
 			</Provider>
 		</React.Fragment>
 	);
