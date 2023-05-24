@@ -8,6 +8,7 @@ import {BaseLayout} from "../../src/components/baselayout";
 import ReactMarkdown from "react-markdown";
 import ChipComponent from "../../src/components/chip";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {NextSeo} from "next-seo";
 
 const ProjectDetail = () => {
     const {query} = useRouter();
@@ -42,6 +43,27 @@ const ProjectDetail = () => {
     if (error) return <div className="text-center text-red-500">{error}</div>
 
     return <BaseLayout title={`Gabriel Kaszewski - ${project.name}`}>
+        <NextSeo
+            title={`${project.name}`}
+            description={project.description}
+            openGraph={{
+                title: `${project.name}`,
+                description: project.description,
+                images: [
+                    {
+                        url: project.thumbnails[0].file,
+                        width: 800,
+                        height: 600,
+                    },
+                ],
+                siteName: `${project.name} - Gabriel Kaszewski`,
+            }}
+            twitter={{
+                handle: '@handle',
+                site: '@site',
+                cardType: 'summary_large_image',
+            }}
+        />
         <div className="prose lg:prose-lg xl:prose-xl p-4 flex w-full flex-col justify-center items-center gap-4 mt-16">
             <h1>{project.name}</h1>
             <span className="mt-8" />
