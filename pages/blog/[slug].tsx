@@ -7,7 +7,7 @@ import {BASE_URL} from "../../src/utils/ApiData";
 import PostComponent from "../../src/components/post";
 import {NextSeo} from "next-seo";
 
-interface Props{
+interface Props {
     data: Post;
 }
 
@@ -21,6 +21,13 @@ export default function PostPage(props: Props) {
                 title: post.title,
                 url: `https://gabrielkaszewski.dev/blog/${post.slug}`,
                 description: `${post.content.slice(0, 100)}...`,
+                article: {
+                    publishedTime: post.createdAt,
+                    modifiedTime: post.updatedAt,
+                    authors: [
+                        'Gabriel Kaszewski',
+                    ],
+                },
             }} twitter={{
                 handle: '@handle',
                 site: '@site',
