@@ -9,6 +9,8 @@ const AutoLogin = () => {
         // @ts-ignore
         dispatch(signedIn());
     }, []);
+
+    return <></>
 }
 
 
