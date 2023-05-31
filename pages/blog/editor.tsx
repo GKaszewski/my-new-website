@@ -13,21 +13,23 @@ import fetchPosts from "../../src/redux/dispatchers/blog/fetchPosts";
 import modifyPost from "../../src/redux/dispatchers/blog/modifyPost";
 import uploadDraft from "../../src/redux/dispatchers/blog/uploadDraft";
 import uploadPost from "../../src/redux/dispatchers/blog/uploadPost";
-import { uploadFile } from "../../src/redux/dispatchers/files/uploadFile";
 import { Post } from "../../src/redux/types";
+import {onFileDrop} from "../../src/utils/onFileDrop";
+import useUploadedFile from "../../src/utils/hooks/useUploadedFile";
 
 export default function BlogEditorPage() {
 	const dispatch = useDispatch();
 	const { loggedIn, token } = useSelector((state) => state.authReducer);
 	const { drafts, posts } = useSelector((state) => state.postsReducer);
 	const { isToggled } = useSelector((state) => state.sidebarReducer);
-	const { uploadedFile } = useSelector((state) => state.filesReducer);
 
 	const [title, setTitle] = useState<string>("");
 	const [content, setContent] = useState<string>("");
 	const [category, setCategory] = useState<string>("LIFE");
 
 	const [currentPost, setCurrentPost] = useState<Post | null>();
+
+	useUploadedFile(setContent);
 
 	useEffect(() => {
 		dispatch(fetchPosts());
@@ -38,12 +40,6 @@ export default function BlogEditorPage() {
 		dispatch(fetchPosts());
 		dispatch(fetchDrafts());
 	}, [isToggled]);
-
-	useEffect(() => {
-		if (!uploadedFile) return;
-		const template = `![](${uploadedFile?.file})`;
-		setContent((prev) => prev + template);
-	}, [uploadedFile]);
 
 	const notAuthenticatedView = () => {
 		return (
@@ -117,14 +113,6 @@ export default function BlogEditorPage() {
 		reset();
 	};
 
-	const onFileDrop = (event) => {
-		event.stopPropagation();
-		event.preventDefault();
-		const file = event.dataTransfer.files[0];
-		if (file.type.split("/")[0] !== "image") return;
-		dispatch(uploadFile(file, token));
-	};
-
 	return (
 		<BaseLayout title="Gabriel Kaszewski - Blog Editor">
 			<span className="mt-32 md:mt-16"></span>
@@ -179,7 +167,7 @@ export default function BlogEditorPage() {
 
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-2 min-w-full">
 				<div
-					onDrop={(event) => onFileDrop(event)}
+					onDrop={(event) => onFileDrop(event, dispatch, token)}
 					className="flex flex-col h-5/6"
 				>
 					<p className="text-lg font-semibold">Content</p>

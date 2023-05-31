@@ -9,6 +9,7 @@ interface State {
 	deletePending: boolean;
 	deleteError: any;
 	uploadedFile: FileFromBackend;
+	uploadedFiles: FileFromBackend[];
 	files: FileFromBackend[];
 }
 
@@ -18,6 +19,7 @@ const initialState: State = {
 	uploadPending: false,
 	uploadError: null,
 	uploadedFile: null,
+	uploadedFiles: [],
 	deletePending: false,
 	deleteError: null,
 	files: [],
@@ -86,6 +88,27 @@ export const filesReducer = (
 				deletePending: false,
 				deleteError: action.payload,
 			};
+			case FilesActionKeys.UPLOAD_FILES_PENDING:
+				return {
+					...state,
+					uploadPending: true,
+					uploadError: null,
+					uploadedFiles: [],
+				};
+			case FilesActionKeys.UPLOAD_FILES_SUCCESS:
+				return {
+					...state,
+					uploadPending: false,
+					uploadError: null,
+					uploadedFiles: action.payload,
+				};
+			case FilesActionKeys.UPLOAD_FILES_ERROR:
+				return {
+					...state,
+					uploadPending: false,
+					uploadError: action.payload,
+					uploadedFiles: [],
+				};
 		default:
 			return state;
 	}
